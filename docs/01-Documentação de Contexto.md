@@ -1,46 +1,41 @@
 # Introdução
 
-Texto descritivo com a visão geral do projeto abordado. Inclui o contexto, o problema, os objetivos, a justificativa e o público-alvo do projeto.
+Os softwares de gerenciamento podem ser bem aproveitados em contextos de complexidade de organização de instituições públicas, empresas ou acervos pessoais. No caso das bibliotecas eles podem auxiliar na dinamização do local, uma vez que as bibliotecas normalmente possuem formas analógicas ou sistemas muito simples de empréstimo, devolução ou no caso de acervos pessoais, que o principal intuito é organizar o acervo.
+
+A vantagem dos sistemas de gerenciamento é que eles concentram todas as etapas do processo de consulta, empréstimo, organização e reserva. No caso do software que será desenvolvido ao longo do projeto, há a facilitação da organização do acervo pessoal do usuário, além de dinamizar o processo de consulta e empréstimo durante a visualização de bibliotecas de outros usuários que estão presentes no sistema
+
+Buscando aplicar esses princípios, será construído ao longo do projeto um sistema de gerenciamento de bibliotecas pessoais com o intuito de melhorar a gestão dos acervos pessoais e implementar uma dinâmica de empréstimo de livros entre usuários comuns. Ou seja, caso o usuário X possua um acervo, ele poderá tanto organizá-lo quanto disponibilizar para que outros usuários peguem os livros emprestados e vice-versa
+
+O sistema terá funcionalidades de busca, cadastro de livros na biblioteca do usuário, consulta dos acervos de outros usuários, empréstimo e reserva. Desta forma, as vantagens ditas anteriormente serão consequência da elaboração do projeto proposto.
+
 
 ## Problema
-Nesse momento você deve apresentar o problema que a sua aplicação deve  resolver. No entanto, não é a hora de comentar sobre a aplicação.
 
-Descreva também o contexto em que essa aplicação será usada, se  houver: empresa, tecnologias, etc. Novamente, descreva apenas o que de  fato existir, pois ainda não é a hora de apresentar requisitos  detalhados ou projetos.
-
-Nesse momento, o grupo pode optar por fazer uso  de ferramentas como Design Thinking, que permite um olhar de ponta a ponta para o problema.
-
-> **Links Úteis**:
-> - [Objetivos, Problema de pesquisa e Justificativa](https://medium.com/@versioparole/objetivos-problema-de-pesquisa-e-justificativa-c98c8233b9c3)
-> - [Matriz Certezas, Suposições e Dúvidas](https://medium.com/educa%C3%A7%C3%A3o-fora-da-caixa/matriz-certezas-suposi%C3%A7%C3%B5es-e-d%C3%BAvidas-fa2263633655)
-> - [Brainstorming](https://www.euax.com.br/2018/09/brainstorming/)
-
+Existe a necessidade de informatizar a gestão de bibliotecas pessoais, devido ao tempo gasto na organização dos livros e consulta de títulos, criando também possibilidades de troca e empréstimos entre outras bibliotecas pessoais.
 ## Objetivos
 
-Aqui você deve descrever os objetivos do trabalho indicando que o objetivo geral é desenvolver um software para solucionar o problema apresentado acima. 
+Desenvolver um sistema que seja capaz de gerenciar bibliotecas pessoais e contemplar empréstimos e trocas entre os usuários.
 
-Apresente também alguns (pelo menos 2) objetivos específicos dependendo de onde você vai querer concentrar a sua prática investigativa, ou como você vai aprofundar no seu trabalho.
- 
-> **Links Úteis**:
-> - [Objetivo geral e objetivo específico: como fazer e quais verbos utilizar](https://blog.mettzer.com/diferenca-entre-objetivo-geral-e-objetivo-especifico/)
+### Objetivos específicos 
+
+●	Levantar requisitos de acordo com as histórias dos usuários.
+
+●	Modelar, validar, prototipar e implementar o back-end junto aos usuários estudados e analisados.
+
+●	Promover um ambiente digital seguro para o usuário, preservando as políticas de privacidade e uso de dados. 
+
+●	Promover no sistema a troca de livros para que os usuários possam fazer esse câmbio de exemplares.
+
+●	Implementar funcionalidades de reserva para que os usuários possam almejar livros que não estejam disponíveis para o empréstimo.
+
+●	Testar o sistema de forma local e online.
 
 ## Justificativa
 
-Descreva a importância ou a motivação para trabalhar com esta aplicação que você escolheu. Indique as razões pelas quais você escolheu seus objetivos específicos ou as razões para aprofundar em certos aspectos do software.
+As bibliotecas normalmente possuem formas analógicas ou sistemas muito simples de empréstimo, devolução ou em outros casos acervos pessoais, tendo como o principal intuito manter a organização.
 
-O grupo de trabalho pode fazer uso de questionários, entrevistas e dados estatísticos, que podem ser apresentados, com o objetivo de esclarecer detalhes do problema que será abordado pelo grupo.
-
-> **Links Úteis**:
-> - [Como montar a justificativa](https://guiadamonografia.com.br/como-montar-justificativa-do-tcc/)
+Devido à complexidade de organização de instituições públicas, empresas ou acervos pessoais, se faz necessária a utilização de softwares para gerenciamento e gestão de bibliotecas pessoais e também, ao tempo gasto na organização dos livros e consulta de títulos, criando a possibilidades de troca e empréstimos entre outras bibliotecas pessoais. Diante de tais motivações, será criado um sistema que seja capaz de gerenciar bibliotecas pessoais e contemplar empréstimos e trocas entre os usuários.
 
 ## Público-Alvo
 
-Descreva quem serão as pessoas que usarão a sua aplicação indicando os diferentes perfis. O objetivo aqui não é definir quem serão os clientes ou quais serão os papéis dos usuários na aplicação. A ideia é, dentro do possível, conhecer um pouco mais sobre o perfil dos usuários: conhecimentos prévios, relação com a tecnologia, relações
-hierárquicas, etc.
-
-Adicione informações sobre o público-alvo por meio de uma descrição textual, diagramas de personas e mapa de stakeholders.
-
-> **Links Úteis**:
-> - [Público-alvo](https://blog.hotmart.com/pt-br/publico-alvo/)
-> - [Como definir o público alvo](https://exame.com/pme/5-dicas-essenciais-para-definir-o-publico-alvo-do-seu-negocio/)
-> - [Público-alvo: o que é, tipos, como definir seu público e exemplos](https://klickpages.com.br/blog/publico-alvo-o-que-e/)
-> - [Qual a diferença entre público-alvo e persona?](https://rockcontent.com/blog/diferenca-publico-alvo-e-persona/)
+Definimos como público alvo pessoas com idade superior a 18 anos, que possuem livros e desejam montar/organizar sua biblioteca pessoal. Também possuindo interesse em realizar trocas/empréstimos de livros.
