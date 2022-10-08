@@ -16,5 +16,6 @@ namespace Projeto.Models
         public string CPF { get; set; }
         [Required(ErrorMessage = "Nome obrigatório!")]
         public string Telefone { get; set; }
+
     }
 }

@@ -7,7 +7,7 @@ namespace Projeto.Models
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
-        //coleção de veiculos
+
         public DbSet<Usuario> Usuarios { get; set; }
     }
 }
