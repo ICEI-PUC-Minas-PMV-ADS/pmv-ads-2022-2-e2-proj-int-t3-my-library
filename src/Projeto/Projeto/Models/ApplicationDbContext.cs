@@ -9,5 +9,8 @@ namespace Projeto.Models
         }
 
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Biblioteca> Bibliotecas { get; set; }
+        public DbSet<Reserva> Reservas { get; set; }
+        public DbSet<Livro> Livros { get; set; }
     }
 }
