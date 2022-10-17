@@ -15,12 +15,72 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = E:\faculdade\eixo_2\projeto\pmv-ads-2022-2-e2-proj-int-t3-my-library\src\Projeto\Projeto
 build_property._RazorSourceGeneratorDebug = 
 
+[E:/faculdade/eixo_2/projeto/pmv-ads-2022-2-e2-proj-int-t3-my-library/src/Projeto/Projeto/Views/Bibliotecas/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmlibGlvdGVjYXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/faculdade/eixo_2/projeto/pmv-ads-2022-2-e2-proj-int-t3-my-library/src/Projeto/Projeto/Views/Bibliotecas/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmlibGlvdGVjYXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/faculdade/eixo_2/projeto/pmv-ads-2022-2-e2-proj-int-t3-my-library/src/Projeto/Projeto/Views/Bibliotecas/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmlibGlvdGVjYXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/faculdade/eixo_2/projeto/pmv-ads-2022-2-e2-proj-int-t3-my-library/src/Projeto/Projeto/Views/Bibliotecas/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmlibGlvdGVjYXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/faculdade/eixo_2/projeto/pmv-ads-2022-2-e2-proj-int-t3-my-library/src/Projeto/Projeto/Views/Bibliotecas/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmlibGlvdGVjYXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/faculdade/eixo_2/projeto/pmv-ads-2022-2-e2-proj-int-t3-my-library/src/Projeto/Projeto/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/faculdade/eixo_2/projeto/pmv-ads-2022-2-e2-proj-int-t3-my-library/src/Projeto/Projeto/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/faculdade/eixo_2/projeto/pmv-ads-2022-2-e2-proj-int-t3-my-library/src/Projeto/Projeto/Views/Livros/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGl2cm9zXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/faculdade/eixo_2/projeto/pmv-ads-2022-2-e2-proj-int-t3-my-library/src/Projeto/Projeto/Views/Livros/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGl2cm9zXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/faculdade/eixo_2/projeto/pmv-ads-2022-2-e2-proj-int-t3-my-library/src/Projeto/Projeto/Views/Livros/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGl2cm9zXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/faculdade/eixo_2/projeto/pmv-ads-2022-2-e2-proj-int-t3-my-library/src/Projeto/Projeto/Views/Livros/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGl2cm9zXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/faculdade/eixo_2/projeto/pmv-ads-2022-2-e2-proj-int-t3-my-library/src/Projeto/Projeto/Views/Livros/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGl2cm9zXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/faculdade/eixo_2/projeto/pmv-ads-2022-2-e2-proj-int-t3-my-library/src/Projeto/Projeto/Views/Reservas/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzZXJ2YXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/faculdade/eixo_2/projeto/pmv-ads-2022-2-e2-proj-int-t3-my-library/src/Projeto/Projeto/Views/Reservas/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzZXJ2YXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/faculdade/eixo_2/projeto/pmv-ads-2022-2-e2-proj-int-t3-my-library/src/Projeto/Projeto/Views/Reservas/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzZXJ2YXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/faculdade/eixo_2/projeto/pmv-ads-2022-2-e2-proj-int-t3-my-library/src/Projeto/Projeto/Views/Reservas/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzZXJ2YXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/faculdade/eixo_2/projeto/pmv-ads-2022-2-e2-proj-int-t3-my-library/src/Projeto/Projeto/Views/Reservas/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzZXJ2YXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/faculdade/eixo_2/projeto/pmv-ads-2022-2-e2-proj-int-t3-my-library/src/Projeto/Projeto/Views/Shared/Error.cshtml]
