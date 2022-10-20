@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Projeto.Models.Usuario>
+﻿@model IEnumerable<Projeto.Models.Reserva>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,28 +13,28 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Email)
+                @Html.DisplayNameFor(model => model.Usuario)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.Livro)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CPF)
+                @Html.DisplayNameFor(model => model.DataInicio)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Telefone)
+                @Html.DisplayNameFor(model => model.DataFim)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Endereco)
+                @Html.DisplayNameFor(model => model.Status)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Senha)
+                @Html.DisplayNameFor(model => model.AvaliacaoProprietario)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DataCadastro)
+                @Html.DisplayNameFor(model => model.AvaliacaoConsulente)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DataAtualizacao)
+                @Html.DisplayNameFor(model => model.DataDevolucaoAntecipada)
             </th>
             <th></th>
         </tr>
@@ -43,28 +43,28 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Email)
+                @Html.DisplayFor(modelItem => item.Usuario.CPF)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                @Html.DisplayFor(modelItem => item.Livro.Autor)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CPF)
+                @Html.DisplayFor(modelItem => item.DataInicio)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Telefone)
+                @Html.DisplayFor(modelItem => item.DataFim)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Endereco)
+                @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Senha)
+                @Html.DisplayFor(modelItem => item.AvaliacaoProprietario)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DataCadastro)
+                @Html.DisplayFor(modelItem => item.AvaliacaoConsulente)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DataAtualizacao)
+                @Html.DisplayFor(modelItem => item.DataDevolucaoAntecipada)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

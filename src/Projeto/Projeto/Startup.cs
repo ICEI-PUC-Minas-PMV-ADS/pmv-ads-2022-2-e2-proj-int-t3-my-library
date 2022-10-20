@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.EntityFrameworkCore;
 using Projeto.Models;
 
 namespace Projeto
@@ -16,6 +17,18 @@ namespace Projeto
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
             );
 
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options => {
+                options.AccessDeniedPath = "/Usuarios/AccessDenied/";
+                options.LoginPath = "/Usuarios/Login/";
+            });
+
             services.AddControllersWithViews();
         }
         public void Configure(WebApplication app, IWebHostEnvironment environment)
@@ -32,7 +45,11 @@ namespace Projeto
 
             app.UseRouting();
 
+            app.UseCookiePolicy();
+
             app.UseAuthorization();
+
+            app.UseAuthentication();
 
             app.MapControllerRoute(
                 name: "default",
