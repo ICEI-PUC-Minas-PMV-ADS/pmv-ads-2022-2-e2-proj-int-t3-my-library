@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\faculdade\\eixo_2\\projeto\\pmv-ads-2022-2-e2-proj-int-t3-my-library\\src\\Projeto\\Projeto\\Projeto.csproj": {}
+    "C:\\Users\\gabri\\source\\repos\\pmv-ads-2022-2-e2-proj-int-t3-my-library\\src\\Projeto\\Projeto\\Projeto.csproj": {}
   },
   "projects": {
-    "E:\\faculdade\\eixo_2\\projeto\\pmv-ads-2022-2-e2-proj-int-t3-my-library\\src\\Projeto\\Projeto\\Projeto.csproj": {
+    "C:\\Users\\gabri\\source\\repos\\pmv-ads-2022-2-e2-proj-int-t3-my-library\\src\\Projeto\\Projeto\\Projeto.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\faculdade\\eixo_2\\projeto\\pmv-ads-2022-2-e2-proj-int-t3-my-library\\src\\Projeto\\Projeto\\Projeto.csproj",
+        "projectUniqueName": "C:\\Users\\gabri\\source\\repos\\pmv-ads-2022-2-e2-proj-int-t3-my-library\\src\\Projeto\\Projeto\\Projeto.csproj",
         "projectName": "Projeto",
-        "projectPath": "E:\\faculdade\\eixo_2\\projeto\\pmv-ads-2022-2-e2-proj-int-t3-my-library\\src\\Projeto\\Projeto\\Projeto.csproj",
-        "packagesPath": "C:\\Users\\jvles\\.nuget\\packages\\",
-        "outputPath": "E:\\faculdade\\eixo_2\\projeto\\pmv-ads-2022-2-e2-proj-int-t3-my-library\\src\\Projeto\\Projeto\\obj\\",
+        "projectPath": "C:\\Users\\gabri\\source\\repos\\pmv-ads-2022-2-e2-proj-int-t3-my-library\\src\\Projeto\\Projeto\\Projeto.csproj",
+        "packagesPath": "C:\\Users\\gabri\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\gabri\\source\\repos\\pmv-ads-2022-2-e2-proj-int-t3-my-library\\src\\Projeto\\Projeto\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\jvles\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\gabri\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -87,7 +82,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }
