@@ -10,6 +10,7 @@ namespace Projeto.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Email obrigatório!")]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Nome obrigatório!")]
@@ -25,13 +26,10 @@ namespace Projeto.Models
         public string Endereco { get; set; }
 
         [Required(ErrorMessage = "Senha obrigatória!")]
+        [DataType(DataType.Password)]
         public string Senha { get; set; }
 
-        public DateTime DataCadastro 
-        {
-            get { return DataCadastro; }
-            set { DataCadastro = DateTime.Now; }
-        }
+        public DateTime DataCadastro { get; set; }
 
         public DateTime DataAtualizacao { get; set; }
 

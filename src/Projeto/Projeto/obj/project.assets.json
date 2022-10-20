@@ -9921,11 +9921,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\gabri\\Source\\Repos\\pmv-ads-2022-2-e2-proj-int-t3-my-library\\src\\Projeto\\Projeto\\Projeto.csproj",
+      "projectUniqueName": "C:\\Users\\gabri\\source\\repos\\pmv-ads-2022-2-e2-proj-int-t3-my-library\\src\\Projeto\\Projeto\\Projeto.csproj",
       "projectName": "Projeto",
-      "projectPath": "C:\\Users\\gabri\\Source\\Repos\\pmv-ads-2022-2-e2-proj-int-t3-my-library\\src\\Projeto\\Projeto\\Projeto.csproj",
+      "projectPath": "C:\\Users\\gabri\\source\\repos\\pmv-ads-2022-2-e2-proj-int-t3-my-library\\src\\Projeto\\Projeto\\Projeto.csproj",
       "packagesPath": "C:\\Users\\gabri\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\gabri\\Source\\Repos\\pmv-ads-2022-2-e2-proj-int-t3-my-library\\src\\Projeto\\Projeto\\obj\\",
+      "outputPath": "C:\\Users\\gabri\\source\\repos\\pmv-ads-2022-2-e2-proj-int-t3-my-library\\src\\Projeto\\Projeto\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\gabri\\AppData\\Roaming\\NuGet\\NuGet.Config",
