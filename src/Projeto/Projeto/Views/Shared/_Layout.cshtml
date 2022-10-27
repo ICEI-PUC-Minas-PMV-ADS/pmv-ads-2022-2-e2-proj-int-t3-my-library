@@ -9,69 +9,57 @@
     <link rel="stylesheet" href="~/Projeto.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MyLibrary</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                         @if (User.Identity.IsAuthenticated)
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Bibliotecas" asp-action="Index">Bibliotecas</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Bibliotecas" asp-action="Index">Minha Biblioteca</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Livros" asp-action="Index">Livros Emprestados</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Livros" asp-action="Index">Meus Empréstimos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Reservas" asp-action="Index">Reservas</a>
-                            </li>
-                        }
-                    </ul>
-
-                    <ul class="navbar-nav">
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            <li class="nav-item">
-                                Bem vindo, @User.Identity.Name                                 
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Logout">Sair</a>
-                            </li>
-                        } else {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Login">Entrar</a>
-                            </li>
-                        }
-
-                    </ul>
-                </div>
+    <div class="conteudo">
+        <div class="d-flex flex-column flex-shrink-0 p-3 bg-light menu-lateral" >
+            <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none my-library" asp-area="" asp-controller="Home" asp-action="Index">
+                <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+                <span class="span-library">My Library</span>
+            </a>
+            <hr>
+           
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                    <a  class="nav-link active" aria-current="page" asp-area="" asp-controller="Bibliotecas" asp-action="Index">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+                    Bibliotecas
+                    </a>
+                </li>
+                <li>
+                        <a  class="nav-link link-dark" asp-area="" asp-controller="Bibliotecas" asp-action="Index">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                        Minha Biblioteca
+                    </a>
+                </li>
+                <li>
+                        <a  class="nav-link link-dark" asp-area="" asp-controller="Livros" asp-action="Index">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+                        Livros Emprestados
+                    </a>
+                </li>
+                <li>
+                        <a  class="nav-link link-dark" asp-area="" asp-controller="Livros" asp-action="Index">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+                        Meus Empréstimos
+                    </a>
+                </li>
+                <li>
+                        <a  class="nav-link link-dark" asp-area="" asp-controller="Reservas" asp-action="Index">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+                        Reservas
+                    </a>
+                </li>
+            </ul>
+            
+            <hr>
+            <div class="container">
+                &copy; 2022 - MyLibrary
             </div>
-        </nav>
-    </header>
-
-    <div class="container">
+        </div>
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - MyLibrary
-        </div>
-    </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -79,3 +67,22 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
+
+<!-- 
+    Aguardando a finalização de outras páginas para poder integrar a parte abaixo     
+        @if (User.Identity.IsAuthenticated) {
+                            <li class="nav-item">
+                                Bem vindo, @User.Identity.Name
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Logout">Sair</a>
+                            </li>
+        }
+        else {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Login">Entrar</a>
+                            </li>
+        }
+-->
