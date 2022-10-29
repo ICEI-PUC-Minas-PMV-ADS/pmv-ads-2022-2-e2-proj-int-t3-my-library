@@ -34,4 +34,14 @@ namespace Projeto.Models
         public DateTime DataAtualizacao { get; set; }
 
     }
+
+    static class UsuarioLogado
+    {
+        public static Usuario usuario { get; set; }
+
+        public static bool usuarioLogado()
+        {
+            return usuario != null;
+        }
+    }
 }

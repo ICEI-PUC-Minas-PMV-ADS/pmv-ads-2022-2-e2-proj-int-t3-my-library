@@ -16,6 +16,14 @@ namespace Projeto.Models
         public string Nome { get; set; }
 
         public bool Compartilhar { get; set; }
-    
+
+
+        public Biblioteca(int usuarioId, string nome)
+        {
+            UsuarioId = usuarioId;
+            Nome = nome;
+            Compartilhar = true;
+        }
+
     }
 }

@@ -18,6 +18,24 @@ namespace Projeto.Controllers
             _context = context;
         }
 
+
+        // GET: Livros do Usuario
+        public async Task<IActionResult> LivrosDoUsuario()
+        {
+            var applicationDbContext = _context.Livros;
+
+            return View(await applicationDbContext.ToListAsync());
+        }
+
+        // GET: Livros de Outros Usuarios
+        public async Task<IActionResult> LivrosOutrosUsuarios()
+        {
+            var applicationDbContext = _context.Livros;
+
+            return View(await applicationDbContext.ToListAsync());
+        }
+
+
         // GET: Livros
         public async Task<IActionResult> Index()
         {

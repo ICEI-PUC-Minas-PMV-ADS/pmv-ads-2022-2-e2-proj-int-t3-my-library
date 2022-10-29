@@ -62,6 +62,8 @@ namespace Projeto.Controllers
 
             await HttpContext.SignInAsync(principal);
 
+            UsuarioLogado.usuario = user;
+
             return RedirectToAction("Index", "Bibliotecas");
 
         }
@@ -69,6 +71,9 @@ namespace Projeto.Controllers
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync();
+
+            UsuarioLogado.usuario = null;
+
             return RedirectToAction("Login", "Usuarios");
         }
 
@@ -124,9 +129,21 @@ namespace Projeto.Controllers
                 usuario.DataAtualizacao = DateTime.Now;
 
                 _context.Add(usuario);
+
                 await _context.SaveChangesAsync();
+
+                Biblioteca biblioteca = new Biblioteca(
+                    usuario.Id,
+                    "Biblioteca de " + usuario.Name
+                );
+                
+                _context.Add(biblioteca);
+
+                await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Login));
             }
+
             return View(usuario);
         }
 

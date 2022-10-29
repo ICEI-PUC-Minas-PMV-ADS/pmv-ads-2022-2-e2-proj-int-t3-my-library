@@ -2,21 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
+    <meta name="google" value="notranslate">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Projeto</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Projeto.styles.css" asp-append-version="true" />
-
 </head>
+
 <body>
-    @if(User.Identity.IsAuthenticated){
+    @if (UsuarioLogado.usuarioLogado())
+    {
         <div class="conteudo">
             <div class="d-flex flex-column flex-shrink-0 p-3 bg-light menu-lateral">
                 <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none my-library" asp-area="" asp-controller="Home" asp-action="Index">
                     <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
                     <span class="span-library">My Library</span>
                 </a>
+
                 <hr>
 
                 <ul class="nav nav-pills flex-column mb-auto">
@@ -56,6 +59,7 @@
                 </ul>
 
                 <hr>
+
                 <div class="container">
                     &copy; 2022 - MyLibrary
                 </div>
@@ -63,13 +67,10 @@
         </div>
 
     }
-        
-        
-        <main role="main">
-                @RenderBody()
-        </main>
-   
-        
+
+    <main role="main">
+        @RenderBody()
+    </main>
    
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -77,20 +78,3 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
-
-
-<!-- 
-    Aguardando a finalização de outras páginas para poder integrar a parte abaixo     
-        (User.Identity.IsAuthenticated) {
-                            <li class="nav-item">
-                                Bem vindo, @User.Identity.Name
-                            </li>
-
-                           
-        }
-        else {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Login">Entrar</a>
-                            </li>
-        }
--->

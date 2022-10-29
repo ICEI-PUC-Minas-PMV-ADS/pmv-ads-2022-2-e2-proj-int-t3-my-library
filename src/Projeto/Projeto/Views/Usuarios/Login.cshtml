@@ -109,6 +109,8 @@
                 <span asp-validation-for="Senha" class="text-danger"></span>
             </div>
 
+            <h5>@ViewBag.Message</h5>
+
             <div class="form-group mt-4 tela-login-botoes">
                 <div class="tela-login-botao-logar">
                     <input type="submit" value="ENTRAR" class="btn btn-primary mr-4">
@@ -117,12 +119,9 @@
                     <span>Ainda não tem uma conta? <a type="button" asp-controller="Usuarios" asp-action="Create">Clique aqui</a></span>
                 </div>
                 
-                
                 <!--<a type="button" class="btn btn-info" asp-controller="Usuarios" asp-action="Create">Cadastrar</a>-->
             </div>
         </form>
-
-        <h4>@ViewBag.Message</h4>
     </div>
 </div>
 
