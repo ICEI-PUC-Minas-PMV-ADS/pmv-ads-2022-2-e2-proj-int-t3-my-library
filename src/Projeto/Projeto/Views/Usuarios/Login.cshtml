@@ -3,9 +3,99 @@
 @{
     ViewData["Title"] = "Login";
 }
+<style>
+    .tela-login{
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+        justify-content: end;
+        align-items: center;
+        position: relative;
+        background-color: #3C7373;
+        color: white;
+        overflow: hidden;
+    }
+    .tela-login-formulario{
+        margin: 20px;
+    }
 
-<div class="row">
-    <div class="col-md-4 ">
+    .tela-login-formulario input {
+        background-color: #A6B8B8;
+    }
+
+    .titulo-login{
+        position: absolute;
+        top: 5%;
+        right: 10%;
+        text-align: center;
+
+    }
+
+    .titulo-login-principal{
+        font-size: 64px;
+        font-family: 'Inconsolata', monospace;
+    }
+
+    .bloco-branco{
+        position: absolute;
+        z-index: 2;
+        width: 0;
+        height: 0;
+        left: 0;
+        border-right: 0 solid transparent;
+        border-left: 50vw solid #FFF;
+        border-top: 50vh solid transparent;
+        border-bottom: 50vh solid transparent;
+    }
+
+    .bloco-cinza{
+        position: absolute;
+        z-index: 1;
+        width: 0;
+        height: 0;
+        left: 0;
+        border-right: 0 solid transparent;
+        border-left: 55vw solid #A6B8B8;
+        border-top: 55vh solid transparent;
+        border-bottom: 55vh solid transparent;
+    }
+
+    .tela-login-botoes{
+        text-align: center;
+    }
+
+    .tela-login-botao-logar{
+        margin-bottom: 20px;
+    }
+
+    .tela-login-botao-logar input {
+        border-radius: 80px;
+        background-color: #D9D9D9;
+        border: none;
+        width: 170px;
+        color: #3b3a3a;
+    }
+
+    .tela-login-botao-logar input:hover{
+        background-color: #A6B8B8;
+    }
+
+    .tela-login-botao-cadastrar a{
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+    }
+</style>
+
+<div class="tela-login">
+    <div class="bloco-branco"></div>
+    <div class="bloco-cinza"></div>
+    <div class="titulo-login">
+        <div class="titulo-login-principal">MY LIBRARY</div>
+        <div class="titulo-login-subtitulo">Venha se conectar a outros leitores!</div>
+    </div>
+
+    <div class="col-md-4 tela-login-formulario">
         <form asp-action="Login">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -19,9 +109,16 @@
                 <span asp-validation-for="Senha" class="text-danger"></span>
             </div>
 
-            <div class="form-group mt-4">
-                <input type="submit" value="Logar" class="btn btn-primary mr-4">
-                <a type="button" class="btn btn-info" asp-controller="Usuarios" asp-action="Create">Cadastrar</a>
+            <div class="form-group mt-4 tela-login-botoes">
+                <div class="tela-login-botao-logar">
+                    <input type="submit" value="ENTRAR" class="btn btn-primary mr-4">
+                </div>
+                <div class="tela-login-botao-cadastrar">
+                    <span>Ainda não tem uma conta? <a type="button" asp-controller="Usuarios" asp-action="Create">Clique aqui</a></span>
+                </div>
+                
+                
+                <!--<a type="button" class="btn btn-info" asp-controller="Usuarios" asp-action="Create">Cadastrar</a>-->
             </div>
         </form>
 
