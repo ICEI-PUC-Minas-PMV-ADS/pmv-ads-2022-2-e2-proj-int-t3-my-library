@@ -53,7 +53,7 @@ namespace Projeto
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Usuarios}/{action=Login}/{id?}");
+                pattern: "{controller=Usuarios}/{action=Login}/");
         }
     }
 }

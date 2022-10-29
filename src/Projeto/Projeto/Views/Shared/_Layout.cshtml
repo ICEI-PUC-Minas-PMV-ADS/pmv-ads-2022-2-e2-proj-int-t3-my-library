@@ -10,6 +10,7 @@
 
 </head>
 <body>
+    @if(User.Identity.IsAuthenticated){
         <div class="conteudo">
             <div class="d-flex flex-column flex-shrink-0 p-3 bg-light menu-lateral">
                 <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none my-library" asp-area="" asp-controller="Home" asp-action="Index">
@@ -49,6 +50,9 @@
                             Reservas
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Logout">Sair</a>
+                    </li>
                 </ul>
 
                 <hr>
@@ -58,6 +62,8 @@
             </div>
         </div>
 
+    }
+        
         
         <main role="main" class="pb-3">
                 @RenderBody()
@@ -80,9 +86,7 @@
                                 Bem vindo, @User.Identity.Name
                             </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Logout">Sair</a>
-                            </li>
+                           
         }
         else {
                             <li class="nav-item">

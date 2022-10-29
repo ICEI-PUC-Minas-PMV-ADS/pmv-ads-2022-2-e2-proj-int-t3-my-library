@@ -62,7 +62,7 @@ namespace Projeto.Controllers
 
             await HttpContext.SignInAsync(principal);
 
-            return Redirect("/");
+            return RedirectToAction("Index", "Bibliotecas");
 
         }
 
