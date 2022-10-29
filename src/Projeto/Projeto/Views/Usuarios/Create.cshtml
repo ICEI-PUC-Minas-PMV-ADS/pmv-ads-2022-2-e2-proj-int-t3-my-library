@@ -3,12 +3,101 @@
 @{
     ViewData["Title"] = "Create";
 }
+<style>
+    .tela-cadastro{ 
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+        justify-content: end;
+        align-items: center;
+        position: relative;
+        background-color: #3C7373;
+        color: white;
+        overflow: hidden;
+    }
 
-<h1>Cadastrar</h1>
+    .bloco-branco {
+        position: absolute;
+        z-index: 2;
+        width: 0;
+        height: 0;
+        left: 0;
+        border-right: 0 solid transparent;
+        border-left: 50vw solid #FFF;
+        border-top: 50vh solid transparent;
+        border-bottom: 50vh solid transparent;
+    }
 
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
+    .bloco-cinza {
+        position: absolute;
+        z-index: 1;
+        width: 0;
+        height: 0;
+        left: 0;
+        border-right: 0 solid transparent;
+        border-left: 55vw solid #A6B8B8;
+        border-top: 55vh solid transparent;
+        border-bottom: 55vh solid transparent;
+    }
+
+    .titulo-cadastro {
+        position: absolute;
+        top: 5%;
+        right: 10%;
+        text-align: center;
+    }
+
+    .titulo-cadastro-principal {
+        font-size: 64px;
+        font-family: 'Inconsolata', monospace;
+    }
+    
+    .informe{
+        text-align: center;
+        font-family: 'Ligconsolata';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 38px;
+        align-items: center;
+    }
+
+    .bloco-formulario-cadastro {
+        margin: 20px;
+    }
+
+    .formulario-cadastro input{
+        background-color: #A6B8B8;
+
+    }
+
+    .botoes-formulario{
+        text-align: center;
+    }
+    
+    .botoes-formulario input, .botoes-formulario a {
+        width: 170px;
+        height: 43px;
+        background: #D9D9D9;
+        border: 4px solid #FFFFFF;
+        border-radius: 80px;
+        color: #3b3a3a;
+
+    }
+</style>
+<div class="tela-cadastro">
+    <div class="bloco-branco"></div>
+    <div class="bloco-cinza"></div>
+    <div class="titulo-cadastro">
+        <div class="titulo-cadastro-principal">MY LIBRARY</div>
+        <div class="titulo-cadastro-subtitulo">Venha se conectar a outros leitores!</div>
+    </div>
+
+    <div class="col-md-4 bloco-formulario-cadastro">
+        <div class="informe">
+            Informe o seus dados:
+        </div>
+        <form asp-action="Create" class="formulario-cadastro">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Email" class="control-label"></label>
@@ -40,7 +129,7 @@
                 <input asp-for="Senha" class="form-control" />
                 <span asp-validation-for="Senha" class="text-danger"></span>
             </div>
-            <div class="form-group mt-4">
+            <div class="form-group mt-4 botoes-formulario">
                 <a class="btn btn-danger mr-4" asp-controller="Usuarios" asp-action="Login">Voltar</a>
                 <input type="submit" value="Cadastrar" class="btn btn-primary" />
             </div>
