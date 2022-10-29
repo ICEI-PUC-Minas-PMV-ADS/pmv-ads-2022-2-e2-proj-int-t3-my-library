@@ -10,7 +10,6 @@
 
 </head>
 <body>
-    @if (User.Identity.IsAuthenticated){
         <div class="conteudo">
             <div class="d-flex flex-column flex-shrink-0 p-3 bg-light menu-lateral">
                 <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none my-library" asp-area="" asp-controller="Home" asp-action="Index">
@@ -58,9 +57,9 @@
                 </div>
             </div>
         </div>
-    }
+
         
-        <main role="main" class="pb-3 align-self-center">
+        <main role="main" class="pb-3">
                 @RenderBody()
         </main>
    
@@ -76,7 +75,7 @@
 
 <!-- 
     Aguardando a finalização de outras páginas para poder integrar a parte abaixo     
-        @if (User.Identity.IsAuthenticated) {
+        (User.Identity.IsAuthenticated) {
                             <li class="nav-item">
                                 Bem vindo, @User.Identity.Name
                             </li>
