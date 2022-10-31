@@ -38,6 +38,7 @@ namespace Projeto.Models
     static class UsuarioLogado
     {
         public static Usuario usuario { get; set; }
+        public static int bibliotecaId { get; set; }
 
         public static bool usuarioLogado()
         {

@@ -22,7 +22,7 @@ namespace Projeto.Controllers
         // GET: Livros do Usuario
         public async Task<IActionResult> LivrosDoUsuario()
         {
-            var applicationDbContext = _context.Livros;
+            var applicationDbContext = _context.Livros.Include(l => l.Biblioteca).Where(l => l.BibliotecaId == UsuarioLogado.bibliotecaId);
 
             return View(await applicationDbContext.ToListAsync());
         }
@@ -30,7 +30,7 @@ namespace Projeto.Controllers
         // GET: Livros de Outros Usuarios
         public async Task<IActionResult> LivrosOutrosUsuarios()
         {
-            var applicationDbContext = _context.Livros;
+            var applicationDbContext = _context.Livros.Include(l => l.Biblioteca).Where(l => l.BibliotecaId != UsuarioLogado.bibliotecaId);
 
             return View(await applicationDbContext.ToListAsync());
         }

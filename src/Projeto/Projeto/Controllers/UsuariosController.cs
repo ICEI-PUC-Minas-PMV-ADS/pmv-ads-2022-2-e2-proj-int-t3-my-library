@@ -62,9 +62,12 @@ namespace Projeto.Controllers
 
             await HttpContext.SignInAsync(principal);
 
-            UsuarioLogado.usuario = user;
+            var biblioteca = await _context.Bibliotecas.FirstAsync(b => b.UsuarioId == user.Id);
 
-            return RedirectToAction("Index", "Bibliotecas");
+            UsuarioLogado.usuario = user;
+            UsuarioLogado.bibliotecaId = biblioteca.Id;
+
+            return RedirectToAction("LivrosOutrosUsuarios", "Livros");
 
         }
 
