@@ -1,12 +1,27 @@
 # Registro de Testes de Software
 
-<span style="color:red">Pré-requisitos: <a href="3-Projeto de Interface.md"> Projeto de Interface</a></span>, <a href="8-Plano de Testes de Software.md"> Plano de Testes de Software</a>
+Teste 1
 
-Para cada caso de teste definido no Plano de Testes de Software, realize o registro das evidências dos testes feitos na aplicação pela equipe, que comprovem que o critério de êxito foi alcançado (ou não!!!). Para isso, utilize uma ferramenta de captura de tela que mostre cada um dos casos de teste definidos (obs.: cada caso de teste deverá possuir um vídeo do tipo _screencast_ para caracterizar uma evidência do referido caso).
+Requisito: RF-1 Criar tela inicial para a realização de login
 
-## Avaliação
+Validação do template
+Realizar tentativa de login com e-mail correto e senha incorreta
+Realizar tentativa de login com e-mail incorreto
+Validar redirecionamento após login para a tela de Bibliotecas
 
-Discorra sobre os resultados do teste. Ressaltando pontos fortes e fracos identificados na solução. Comente como o grupo pretende atacar esses pontos nas próximas iterações. Apresente as falhas detectadas e as melhorias geradas a partir dos resultados obtidos nos testes.
+Os testes foram realizados com sucesso e não foram encontrados erros.
 
-> **Links Úteis**:
-> - [Ferramentas de Test para Java Script](https://geekflare.com/javascript-unit-testing/)
+
+Teste 2
+
+Requisito: RF-2 Criar função de cadastramento no sistema
+
+ Validação do template
+ Realização de cadastro com dados inválidos
+ Realização de cadastro com dados válidos e validar gravação no banco de dados
+ Validar criação da Biblioteca automaticamente no banco de dados
+ Validar a atualização dos campos Data Cadastro e Data Alteração no banco de dados
+ Tentativa de cadastro com dados de usuário já cadastrado
+ Realizar novo cadastro e validar gravação no banco de dados
+
+Os testes foram realizados com sucesso e não foram encontrados erros.

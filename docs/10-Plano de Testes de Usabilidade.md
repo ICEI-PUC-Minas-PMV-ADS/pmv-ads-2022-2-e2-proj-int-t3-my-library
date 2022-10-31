@@ -1,15 +1,41 @@
 # Plano de Testes de Usabilidade
 
-Os testes de usabilidade permitem avaliar a qualidade da interface com o usuário da aplicação interativa.
+O teste de usabilidade permite avaliar a qualidade da interface com o usuário do software de gerenciamento de livros. O Plano de Testes de software é gerado a partir da especificação do sistema e consiste em casos de testes que deverão ser executados quando a implementação estiver parcial ou totalmente pronta.
 
-Um plano de teste de usabilidade deverá conter: o detalhamento dos objetivos (em função dos requisitos levantados/implementados), dos critérios que serão utilizados para a seleção dos participantes, dos procedimentos a serem adotados pelos condutores de teste (por exemplo: os testes serão presenciais ou remotos? o método será observação direta, medição ou avaliação?), das tarefas a serem executadas, dos dados a serem coletados (quantidade de cliques, número de erros, tempo etc.), a ordem de execução das tarefas e das etapas da sessão de teste, recursos demandados, métricas coletadas etc.
+Forma Utilizada: Medição e Avaliação
 
-Para cada voluntário do teste, é fundamental coletar e apresentar todos os dados/métricas previamente definidos, mas não se esqueça: atendendo à LGPD (Lei Geral de Proteção de Dados), nenhum dado sensível, que permita identificar o voluntário, deverá ser apresentado).
+Para cada ação do participante é possível medir:
 
-As referências abaixo irão auxiliá-lo na geração do artefato "Plano de Testes de Usabilidade".
+    • Facilidade em realizar aquela ação;
+    • Conclusão da tarefa;
+    • Quantidade erros ocorrido em cada ação;
+    • Qual o tempo necessário para concluí-la;
+    • Verificar se a interface do sistema é apresentável.
 
-> **Links Úteis**:
-> - [Teste De Usabilidade: O Que É e Como Fazer Passo a Passo (neilpatel.com)](https://neilpatel.com/br/blog/teste-de-usabilidade/)
-> - [Teste de usabilidade: tudo o que você precisa saber! | by Jon Vieira | Aela.io | Medium](https://medium.com/aela/teste-de-usabilidade-o-que-voc%C3%AA-precisa-saber-39a36343d9a6/)
-> - [Planejando testes de usabilidade: o que (e o que não) fazer | iMasters](https://imasters.com.br/design-ux/planejando-testes-de-usabilidade-o-que-e-o-que-nao-fazer/)
-> - [Ferramentas de Testes de Usabilidade](https://www.usability.gov/how-to-and-tools/resources/templates.html)
+TESTE - 01
+CRITÉRIO DO TESTE
+O SERÁ AVALIADO
+Cadastro de novo usuário
+Concluir o cadastro, considerando o direcionamento do sistema para a homepage
+Facilidade em realizar a ação. Efetivação da tarefa. Quantidade de erros cometidos. Tempo necessário para se concluir.
+TESTE - 02
+CRITÉRIO DO TESTE
+O SERÁ AVALIADO
+Logar no programa
+O sistema será direcionado para a homepage com as informações do usuário.
+Facilidade em realizar a ação. Conclusão da tarefa. Número de erros cometidos. Tempo necessário para se concluir. Interface apresentável.
+
+
+TESTE - 03
+CRITÉRIO DO TESTE
+O SERÁ AVALIADO
+Busca por livros ou títulos.
+Concluir se a solicitação do título tem o retorno esperado.
+Facilidade em realizar a ação. Efetivação da tarefa. Quantidade de erros cometidos. Tempo necessário para se concluir.
+TESTE - 04
+CRITÉRIO DO TESTE
+O SERÁ AVALIADO
+Atualização do status da busca.
+Concluir a atualização do status, verificando o resultado.
+Facilidade em realizar a ação. Efetivação da tarefa. Quantidade de erros cometidos. Tempo necessário para se concluir.
+
