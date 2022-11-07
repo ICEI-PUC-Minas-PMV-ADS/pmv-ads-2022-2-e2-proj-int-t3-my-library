@@ -1,95 +1,159 @@
 ﻿@model IEnumerable<Projeto.Models.Livro>
 
 @{
-    ViewData["Title"] = "LivrosOutrosUsuarios";
+    ViewData["Title"] = "Bibliotecas";
 }
 
-<h1>LivrosOutrosUsuarios</h1>
+<style>
+    main {
+        background-color: #D9D9D9;
+        width: 100%;
+    }
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+    h1 {
+        color: white;
+        background-color: #5B9898;
+        padding: 25px;
+    }
+
+    .botoes-cria-edita {
+        display: flex;
+        justify-content: end;
+        margin-right: 10px;
+    }
+
+    .botoes-cria-edita a {
+        display: block;
+        width: 140px;
+        height: 40px;
+        line-height: 40px;
+        margin: 10px;
+        background-color: #3C7373;
+        color: #FFFFFF;
+        border-radius: 10px;
+        text-decoration: none;
+        text-align: center;
+        font-family: Arial;
+        font-size: 14px;
+    }
+
+    .filtro-minha-biblioteca {
+        width: 100%;
+        height: 100px;
+        background-color: #C8C8C8;
+    }
+
+    .cor-linha {
+        background-color: #979797;
+        color: white;
+    }
+
+    .agrupador-botao-minha-lib {
+        display: flex;
+        margin-right: -19px;
+    }
+
+    .agrupador-botao-minha-lib a {
+        display: block;
+        width: 140px;
+        height: 40px;
+        line-height: 40px;
+        margin: 10px;
+        background-color: #BBBBBB;
+        color: #000000;
+        border-radius: 10px;
+        text-decoration: none;
+        text-align: center;
+        font-family: Arial;
+        font-size: 14px;
+    }
+
+    .linha-livro {
+        background: darkgray;
+    }
+
+    .livro-infos {
+        width: 100%;
+
+    }
+    .livro-infos .livro-nome {
+        text-transform: capitalize;
+        text-transform: capitalize;
+        font-size: 30px;
+        font-weight: 600;
+        color: white;
+    }
+    .livro-infos .livro-isbn {
+
+    }
+    .livro-infos .livro-autor {
+        text-transform: capitalize;
+    }
+    .livro-infos .livro-biblioteca-nome {
+        text-transform: capitalize;
+    }
+
+    .livro-acao {
+        vertical-align: middle;
+    }
+
+    .livro-subtexto {
+        font-weight: 600;
+    }
+
+    .btn-reservar {
+        text-decoration: none;
+    }
+
+    .btn-reservar div {
+        display: flex;
+        width: 100px;
+        height: 40px;
+        align-items: center;
+        justify-content: center;
+        background-color: #3b3a3a;
+        color: white;
+        border-radius: 80px;
+        border: none;
+    }
+
+    .btn-reservar div:hover{
+        opacity: 0.75;
+    }
+</style>
+
+<h1>Bibliotecas</h1>
+
 <table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Biblioteca)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Autor)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Titulo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Ano)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Genero)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Editora)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Paginas)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ISBN)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Local)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Emprestar)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                    @Html.DisplayFor(modelItem => item.Biblioteca.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Autor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Titulo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ano)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Genero)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Editora)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Paginas)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ISBN)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Local)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Emprestar)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr class="linha-livro">
+                <td class="livro-infos">
+                    <div class="livro-nome">
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </div>
+
+                    <div style="display: flex;">
+                        <div style="width: 100%;">
+                            <div class="livro-isbn"><span class="livro-subtexto">ISBN:</span> @Html.DisplayFor(modelItem => item.ISBN)</div>
+                            <div class="livro-autor"><span class="livro-subtexto">Autor:</span> @Html.DisplayFor(modelItem => item.Autor)</div>
+                        </div>
+
+                        <div style="width: 100%;">
+                            <div class="livro-biblioteca-nome">@Html.DisplayFor(modelItem => item.Biblioteca.Nome)</div>
+                        </div>
+                    </div>
+                </td>
+
+                <td class="livro-acao">
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn-reservar" title="Clique para solicitar reserva">
+                        <div>
+                            Reservar
+                        </div>
+                    </a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
