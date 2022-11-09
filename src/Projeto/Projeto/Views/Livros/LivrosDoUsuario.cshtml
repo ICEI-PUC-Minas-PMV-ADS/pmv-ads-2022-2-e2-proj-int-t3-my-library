@@ -25,6 +25,17 @@
       
     }
 
+    .botao-create{
+        display: block;
+        width: 140px;
+        height: 40px;
+        line-height: 40px;
+        margin: 10px;
+        background-color: #3C7373;
+        color: #FFFFFF;
+        border-radius: 10px;
+        vertical-align: center;
+    }
     .botoes-cria-edita a{
         display: block;
         width: 140px;
@@ -110,7 +121,8 @@
 <h1>Minha biblioteca</h1>
 
 <div class="botoes-cria-edita">
-    <a asp-action="Create">Create New</a>
+    <button class="btn btn-success create">Adicionar Livro <i class="glyphicon glyphicon-open"></i></button>
+    <!--<a asp-action="Create">Create New</a>-->
     <a asp-controller="Bibliotecas" asp-action="Edit">Renomear Biblioteca</a>
 </div>
 
@@ -163,3 +175,17 @@
 }
     </tbody>
 </table>
+
+<div id="modal" class="modal fade" role="dialog"></div>
+
+@section scripts{
+    <script>
+        $(function()){
+            $(".create").click(function () {
+                $("#modal").load("Create", function () {
+                    $("#modal").modal();
+                })
+            });
+        }
+    </script>
+}

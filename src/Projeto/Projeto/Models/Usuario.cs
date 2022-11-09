@@ -30,7 +30,7 @@ namespace Projeto.Models
 
         [Required(ErrorMessage = "Senha obrigatória!")]
         [DataType(DataType.Password)]
-        [RegularExpression(@"(?=^.{6,}$)((?=.*\w)(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[|!""$%&\/\(\)\?\^\'\\\+\-\*]))^.*", ErrorMessage = "Senha de no mínimo 6 caracteres, pelo menos uma letra maiúscula, pelo menos uma letra minúscula, pelo menos um número, pelo menos um caractere especial")]
+
         public string Senha { get; set; }
 
         public DateTime DataCadastro { get; set; }
