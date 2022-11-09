@@ -10,15 +10,18 @@ namespace Projeto.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Email obrigatório!")]
-        [DataType(DataType.EmailAddress)]
+        //[DataType(DataType.EmailAddress, ErrorMessage = "")]
+        [RegularExpression(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$", ErrorMessage = "Digite um e-mail válido.")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Nome obrigatório!")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "CPF obrigatório!")]
+        [RegularExpression(@"^\d{3}\.\d{3}\.\d{3}\-\d{2}$", ErrorMessage = "Digite o CPF corretamente")]
         public string CPF { get; set; }
 
+        [RegularExpression(@"(^[0-9]{2})?(\s|-)?(9?[0-9]{1})(9?[0-9]{4})-?([0-9]{4}$)", ErrorMessage = "Digite um telefone válido.")]
         [Required(ErrorMessage = "Telefone obrigatório!")]
         public string Telefone { get; set; }
 
@@ -27,6 +30,7 @@ namespace Projeto.Models
 
         [Required(ErrorMessage = "Senha obrigatória!")]
         [DataType(DataType.Password)]
+        [RegularExpression(@"(?=^.{6,}$)((?=.*\w)(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[|!""$%&\/\(\)\?\^\'\\\+\-\*]))^.*", ErrorMessage = "Senha de no mínimo 6 caracteres, pelo menos uma letra maiúscula, pelo menos uma letra minúscula, pelo menos um número, pelo menos um caractere especial")]
         public string Senha { get; set; }
 
         public DateTime DataCadastro { get; set; }
