@@ -37,24 +37,6 @@ namespace Projeto.Controllers
             return View(await applicationDbContext.ToListAsync());
         }
 
-        // GET: Reservar Livro
-        public async Task<IActionResult> ReservarLivro(int? id)
-        {
-            if (id == null || _context.Livros == null)
-            {
-                return NotFound();
-            }
-
-            var livro = await _context.Livros.Include(l => l.Biblioteca).FirstOrDefaultAsync(l => l.Id == id);
-
-            if (livro == null)
-            {
-                return NotFound();
-            }
-
-            return View(livro);
-        }
-
         // GET: Livros de Outros Usuarios
         public async Task<IActionResult> LivrosOutrosUsuarios()
         {

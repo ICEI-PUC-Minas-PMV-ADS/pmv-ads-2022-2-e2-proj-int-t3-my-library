@@ -18,6 +18,59 @@ namespace Projeto.Controllers
             _context = context;
         }
 
+
+
+        // GET: Reservar Livro
+        public async Task<IActionResult> ReservarLivro(int? id)
+        {
+            if (id == null || _context.Livros == null)
+            {
+                return NotFound();
+            }
+
+            var livro = await _context.Livros.Include(l => l.Biblioteca).FirstOrDefaultAsync(l => l.Id == id);
+
+            if (livro == null)
+            {
+                return NotFound();
+            }
+
+            return View(livro);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ReservarLivro(int id, DateTime dataInicio, DateTime DataFim)
+        {
+            //if (id != livro.Id)
+            //{
+            //    return NotFound();
+            //}
+
+            //if (ModelState.IsValid)
+            //{
+            //    try
+            //    {
+            //        _context.Update(livro);
+            //        await _context.SaveChangesAsync();
+            //    }
+            //    catch (DbUpdateConcurrencyException)
+            //    {
+            //        if (!LivroExists(livro.Id))
+            //        {
+            //            return NotFound();
+            //        }
+            //        else
+            //        {
+            //            throw;
+            //        }
+            //    }
+            //    return RedirectToAction(nameof(Index));
+            //}
+            //ViewData["BibliotecaId"] = new SelectList(_context.Bibliotecas, "Id", "Id", livro.BibliotecaId);
+            return View();
+        }
+
         // GET: Reservas
         public async Task<IActionResult> Index()
         {
