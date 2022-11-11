@@ -120,9 +120,16 @@
 <!-- Ver como puxar direto do banco o nome da biblioteca do usuario-->
 <h1>Minha biblioteca</h1>
 
+@using (Html.BeginForm())
+{
+    <p>
+        Pesquisar por: @Html.TextBox("SearchString")
+        <input type="submit" value="Buscar" />
+    </p>
+}
+
 <div class="botoes-cria-edita">
-    <button class="btn btn-success create">Adicionar Livro <i class="glyphicon glyphicon-open"></i></button>
-    <!--<a asp-action="Create">Create New</a>-->
+    <a asp-action="Create">Adicionar Livro</a>
     <a asp-controller="Bibliotecas" asp-action="Edit">Renomear Biblioteca</a>
 </div>
 
@@ -198,16 +205,8 @@
     </tbody>
 </table>
 
-<div id="modal" class="modal fade" role="dialog"></div>
-
 @section scripts{
     <script>
        
-            $(".create").click(function () {
-                $("#modal").load("Create", function () {
-                    $("#modal").modal();
-                })
-            });
-        
     </script>
 }

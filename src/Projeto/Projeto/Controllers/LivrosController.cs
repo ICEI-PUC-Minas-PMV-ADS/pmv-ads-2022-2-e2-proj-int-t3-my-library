@@ -20,11 +20,39 @@ namespace Projeto.Controllers
 
 
         // GET: Livros do Usuario
-        public async Task<IActionResult> LivrosDoUsuario()
+        public async Task<IActionResult> LivrosDoUsuario(string searchString)
         {
-            var applicationDbContext = _context.Livros.Include(l => l.Biblioteca).Where(l => l.BibliotecaId == UsuarioLogado.bibliotecaId);
+            var applicationDbContext = _context.Livros
+                .Include(l => l.Biblioteca)
+                .Where(l => 
+                    l.BibliotecaId == UsuarioLogado.bibliotecaId 
+                    && (
+                        String.IsNullOrEmpty(searchString) 
+                        || (!String.IsNullOrEmpty(searchString) && (
+                            l.Nome.ToLower().IndexOf(searchString.ToLower()) != -1 
+                            || l.Autor.ToLower().IndexOf(searchString.ToLower()) != -1
+                        )))
+                );
 
             return View(await applicationDbContext.ToListAsync());
+        }
+
+        // GET: Reservar Livro
+        public async Task<IActionResult> ReservarLivro(int? id)
+        {
+            if (id == null || _context.Livros == null)
+            {
+                return NotFound();
+            }
+
+            var livro = await _context.Livros.Include(l => l.Biblioteca).FirstOrDefaultAsync(l => l.Id == id);
+
+            if (livro == null)
+            {
+                return NotFound();
+            }
+
+            return View(livro);
         }
 
         // GET: Livros de Outros Usuarios
