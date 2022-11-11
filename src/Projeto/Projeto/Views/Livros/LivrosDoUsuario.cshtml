@@ -126,13 +126,35 @@
     <a asp-controller="Bibliotecas" asp-action="Edit">Renomear Biblioteca</a>
 </div>
 
-<div class="filtro-minha-biblioteca">
-    <div>
-        Filtro
-    </div>
-</div>
 
-<table class="table">
+<table class="table" id="table-livros">
+
+    <thead style="display: none">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ISBN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Autor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ano)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Paginas)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
     <tbody>
 @foreach (var item in Model) {
 
@@ -180,12 +202,12 @@
 
 @section scripts{
     <script>
-        $(function()){
+       
             $(".create").click(function () {
                 $("#modal").load("Create", function () {
                     $("#modal").modal();
                 })
             });
-        }
+        
     </script>
 }

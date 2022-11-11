@@ -15,3 +15,10 @@
 
 //tggNav()
 
+
+
+//filtro tabelas
+
+$(document).ready(function () {
+    $('#table-livros').DataTable();
+});
