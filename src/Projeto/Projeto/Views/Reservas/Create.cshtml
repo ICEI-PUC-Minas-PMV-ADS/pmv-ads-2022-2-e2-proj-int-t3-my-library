@@ -1,24 +1,37 @@
 ﻿@model Projeto.Models.Reserva
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Reservar";
 }
+
+<style>
+    main{
+        width: 100%;
+        background-color: #C8C8C8;
+    }
+
+    h1{
+        width: 100%;
+        background-color: #5B9898;
+        color: white;
+        padding: 20px;
+    }
+
+    .tela-reservar {
+        display: flex;
+        justify-content: center;
+    }
+</style>
 
 <h1>Create</h1>
 
-<h4>Reserva</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<div class="tela-reservar">
+    <div class="col-md-4 formulario">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="UsuarioId" class="control-label"></label>
-                <select asp-for="UsuarioId" class ="form-control" asp-items="ViewBag.UsuarioId"></select>
-            </div>
-            <div class="form-group">
                 <label asp-for="LivroId" class="control-label"></label>
-                <select asp-for="LivroId" class ="form-control" asp-items="ViewBag.LivroId"></select>
+                <input asp-for="LivroId" class="form-control" value="@ViewBag.Livro.Id">
             </div>
             <div class="form-group">
                 <label asp-for="DataInicio" class="control-label"></label>
@@ -29,6 +42,11 @@
                 <label asp-for="DataFim" class="control-label"></label>
                 <input asp-for="DataFim" class="form-control" />
                 <span asp-validation-for="DataFim" class="text-danger"></span>
+            </div>
+            <!--
+            <div class="form-group">
+                <label asp-for="UsuarioId" class="control-label"></label>
+                <select asp-for="UsuarioId" class ="form-control" asp-items="ViewBag.UsuarioId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Status" class="control-label"></label>
@@ -50,16 +68,18 @@
                 <input asp-for="DataDevolucaoAntecipada" class="form-control" />
                 <span asp-validation-for="DataDevolucaoAntecipada" class="text-danger"></span>
             </div>
+            -->
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Reservar" class="btn btn-primary" />
             </div>
         </form>
     </div>
+
+    <div>
+        <a asp-controller="Livros" asp-action="LivrosOutrosUsuarios">voltar</a>
+    </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

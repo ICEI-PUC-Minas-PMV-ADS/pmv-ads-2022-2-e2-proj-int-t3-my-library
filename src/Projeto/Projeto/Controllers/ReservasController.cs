@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Projeto.Enum;
 using Projeto.Models;
 
 namespace Projeto.Controllers
@@ -99,11 +100,25 @@ namespace Projeto.Controllers
         }
 
         // GET: Reservas/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create(int? id)
         {
-            ViewData["LivroId"] = new SelectList(_context.Livros, "Id", "Autor");
-            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "CPF");
+
+            if (id == null || _context.Livros == null)
+            {
+                return NotFound();
+            }
+
+            var livro = await _context.Livros.Include(l => l.Biblioteca).FirstOrDefaultAsync(l => l.Id == id);
+
+            if (livro == null)
+            {
+                return NotFound();
+            }
+
+            ViewData["Livro"] = livro;
+
             return View();
+
         }
 
         // POST: Reservas/Create
@@ -113,15 +128,15 @@ namespace Projeto.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,UsuarioId,LivroId,DataInicio,DataFim,Status,AvaliacaoProprietario,AvaliacaoConsulente,DataDevolucaoAntecipada")] Reserva reserva)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(reserva);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["LivroId"] = new SelectList(_context.Livros, "Id", "Autor", reserva.LivroId);
-            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "CPF", reserva.UsuarioId);
-            return View(reserva);
+
+            reserva.UsuarioId = UsuarioLogado.usuario.Id;
+            reserva.Status = Status.Pendente;
+
+            _context.Add(reserva);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("LivrosOutrosUsuarios", "Livros");
+
         }
 
         // GET: Reservas/Edit/5

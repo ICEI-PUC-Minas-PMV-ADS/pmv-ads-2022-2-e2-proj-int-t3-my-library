@@ -18,16 +18,13 @@ namespace Projeto.Models
         [ForeignKey("LivroId")]
         public Livro Livro { get; set; }
 
-        [Required(ErrorMessage = "Nome obrigatório!")]
+        [Required(ErrorMessage = "Data Início obrigatória!")]
         public DateTime DataInicio { get; set; }
 
-        [Required(ErrorMessage = "Nome obrigatório!")]
+        [Required(ErrorMessage = "Data Fim obrigatória!")]
         public DateTime DataFim { get; set; }
 
-        public Status Status{
-            get;
-            set;
-        }
+        public Status Status{ get; set; }
 
         public int AvaliacaoProprietario { get; set; }
 
