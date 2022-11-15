@@ -28,10 +28,14 @@ namespace Projeto.Controllers
                     l.BibliotecaId == UsuarioLogado.bibliotecaId 
                     && (
                         String.IsNullOrEmpty(searchString) 
-                        || (!String.IsNullOrEmpty(searchString) && (
-                            l.Nome.ToLower().IndexOf(searchString.ToLower()) != -1 
-                            || l.Autor.ToLower().IndexOf(searchString.ToLower()) != -1
-                        )))
+                        || (
+                            !String.IsNullOrEmpty(searchString) 
+                            && (
+                                l.Nome.ToLower().IndexOf(searchString.ToLower()) != -1 
+                                || l.Autor.ToLower().IndexOf(searchString.ToLower()) != -1
+                            )
+                        )
+                    )
                 );
 
             ViewData["NomeBiblioteca"] = (await _context.Bibliotecas.FirstOrDefaultAsync(b => b.Id == UsuarioLogado.bibliotecaId)).Nome;
@@ -40,9 +44,24 @@ namespace Projeto.Controllers
         }
 
         // GET: Livros de Outros Usuarios
-        public async Task<IActionResult> LivrosOutrosUsuarios()
+        public async Task<IActionResult> LivrosOutrosUsuarios(string searchString)
         {
-            var applicationDbContext = _context.Livros.Include(l => l.Biblioteca).Where(l => l.BibliotecaId != UsuarioLogado.bibliotecaId);
+            var applicationDbContext = _context.Livros
+                .Include(l => l.Biblioteca)
+                .Where(l =>
+                    l.BibliotecaId != UsuarioLogado.bibliotecaId
+                    && l.Biblioteca.Compartilhar
+                    && (
+                        String.IsNullOrEmpty(searchString)
+                        || (
+                            !String.IsNullOrEmpty(searchString)
+                            && (
+                                l.Nome.ToLower().IndexOf(searchString.ToLower()) != -1
+                                || l.Autor.ToLower().IndexOf(searchString.ToLower()) != -1
+                            )
+                        )
+                    )
+                );
 
             return View(await applicationDbContext.ToListAsync());
         }
