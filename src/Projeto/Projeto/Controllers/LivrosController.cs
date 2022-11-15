@@ -22,7 +22,7 @@ namespace Projeto.Controllers
         // GET: Livros do Usuario
         public async Task<IActionResult> LivrosDoUsuario(string searchString)
         {
-            var applicationDbContext = _context.Livros
+            var applicationDbContext =  _context.Livros
                 .Include(l => l.Biblioteca)
                 .Where(l => 
                     l.BibliotecaId == UsuarioLogado.bibliotecaId 
@@ -33,6 +33,8 @@ namespace Projeto.Controllers
                             || l.Autor.ToLower().IndexOf(searchString.ToLower()) != -1
                         )))
                 );
+
+            ViewData["NomeBiblioteca"] = (await _context.Bibliotecas.FirstOrDefaultAsync(b => b.Id == UsuarioLogado.bibliotecaId)).Nome;
 
             return View(await applicationDbContext.ToListAsync());
         }

@@ -89,7 +89,7 @@ namespace Projeto.Controllers
         // GET: Usuarios
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Usuarios.ToListAsync());
+            return View(await _context.Usuarios.ToListAsync());
         }
 
         // GET: Usuarios/Details/5
@@ -135,11 +135,13 @@ namespace Projeto.Controllers
 
                 await _context.SaveChangesAsync();
 
-                Biblioteca biblioteca = new Biblioteca(
-                    usuario.Id,
-                    "Biblioteca de " + usuario.Name
-                );
-                
+                var biblioteca = new Biblioteca
+                {
+                    UsuarioId = usuario.Id,
+                    Nome = "Biblioteca de " + usuario.Name,
+                    Compartilhar = true
+                };
+
                 _context.Add(biblioteca);
 
                 await _context.SaveChangesAsync();
@@ -238,14 +240,14 @@ namespace Projeto.Controllers
             {
                 _context.Usuarios.Remove(usuario);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool UsuarioExists(int id)
         {
-          return _context.Usuarios.Any(e => e.Id == id);
+            return _context.Usuarios.Any(e => e.Id == id);
         }
     }
 }

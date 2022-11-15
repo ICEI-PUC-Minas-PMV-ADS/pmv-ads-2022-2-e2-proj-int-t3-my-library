@@ -118,7 +118,13 @@
 
 
 <!-- Ver como puxar direto do banco o nome da biblioteca do usuario-->
-<h1>Minha biblioteca</h1>
+<h1>@ViewBag.NomeBiblioteca</h1>
+
+
+<div class="botoes-cria-edita">
+    <a asp-action="Create">Adicionar Livro</a>
+    <a asp-controller="Bibliotecas" asp-route-id="@UsuarioLogado.bibliotecaId" asp-action="Edit">Renomear Biblioteca</a>
+</div>
 
 @using (Html.BeginForm())
 {
@@ -128,10 +134,6 @@
     </p>
 }
 
-<div class="botoes-cria-edita">
-    <a asp-action="Create">Adicionar Livro</a>
-    <a asp-controller="Bibliotecas" asp-action="Edit">Renomear Biblioteca</a>
-</div>
 
 
 <table class="table" id="table-livros">
