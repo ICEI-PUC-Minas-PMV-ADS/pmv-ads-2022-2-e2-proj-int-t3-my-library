@@ -51,6 +51,7 @@ namespace Projeto.Controllers
                 .Where(l =>
                     l.BibliotecaId != UsuarioLogado.bibliotecaId
                     && l.Biblioteca.Compartilhar
+                    && l.Emprestar
                     && (
                         String.IsNullOrEmpty(searchString)
                         || (

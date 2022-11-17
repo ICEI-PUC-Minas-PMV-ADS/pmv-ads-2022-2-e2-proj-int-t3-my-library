@@ -20,56 +20,47 @@ namespace Projeto.Controllers
         }
 
 
-
-        // GET: Reservar Livro
-        public async Task<IActionResult> ReservarLivro(int? id)
+        // GET: Minhas Reservas
+        public async Task<IActionResult> MinhasReservas()
         {
-            if (id == null || _context.Livros == null)
-            {
-                return NotFound();
-            }
-
-            var livro = await _context.Livros.Include(l => l.Biblioteca).FirstOrDefaultAsync(l => l.Id == id);
-
-            if (livro == null)
-            {
-                return NotFound();
-            }
-
-            return View(livro);
+            var applicationDbContext = _context.Reservas
+                .Include(r => r.Livro)
+                .Where(m => m.UsuarioId == UsuarioLogado.usuario.Id);
+            return View(await applicationDbContext.ToListAsync());
+        }
+        
+        // GET: Solicitações de Reservas
+        public async Task<IActionResult> SolicitacoesReservas()
+        {
+            var applicationDbContext = _context.Reservas
+                .Include(r => r.Livro)
+                .Where(m => m.UsuarioId != UsuarioLogado.usuario.Id && m.Livro.BibliotecaId == UsuarioLogado.bibliotecaId);
+            return View(await applicationDbContext.ToListAsync());
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ReservarLivro(int id, DateTime dataInicio, DateTime DataFim)
+        // GET: Meus Emprestimos
+        public async Task<IActionResult> MeusEmprestimos()
         {
-            //if (id != livro.Id)
-            //{
-            //    return NotFound();
-            //}
+            var applicationDbContext = _context.Reservas
+                .Include(l => l.Livro)
+                .Where(r => 
+                    r.UsuarioId == UsuarioLogado.usuario.Id 
+                    && (r.Status != Status.Pendente)
+                );
+            return View(await applicationDbContext.ToListAsync());
+        }
 
-            //if (ModelState.IsValid)
-            //{
-            //    try
-            //    {
-            //        _context.Update(livro);
-            //        await _context.SaveChangesAsync();
-            //    }
-            //    catch (DbUpdateConcurrencyException)
-            //    {
-            //        if (!LivroExists(livro.Id))
-            //        {
-            //            return NotFound();
-            //        }
-            //        else
-            //        {
-            //            throw;
-            //        }
-            //    }
-            //    return RedirectToAction(nameof(Index));
-            //}
-            //ViewData["BibliotecaId"] = new SelectList(_context.Bibliotecas, "Id", "Id", livro.BibliotecaId);
-            return View();
+        // GET: Livros Emprestados
+        public async Task<IActionResult> LivrosEmprestados()
+        {
+            var applicationDbContext = _context.Reservas
+                .Include(r => r.Livro)
+                .Where(r => 
+                    r.UsuarioId != UsuarioLogado.usuario.Id 
+                    && r.Livro.BibliotecaId == UsuarioLogado.bibliotecaId
+                    && r.Status != Status.Pendente
+                );
+            return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: Reservas

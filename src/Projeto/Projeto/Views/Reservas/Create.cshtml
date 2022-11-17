@@ -23,7 +23,7 @@
     }
 </style>
 
-<h1>Create</h1>
+<h1>Reservar</h1>
 
 <div class="tela-reservar">
     <div class="col-md-4 formulario">
@@ -31,7 +31,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="LivroId" class="control-label"></label>
-                <input asp-for="LivroId" class="form-control" value="@ViewBag.Livro.Id">
+                <input asp-for="LivroId" class="form-control" value="@ViewBag.Livro.Id" readonly>
             </div>
             <div class="form-group">
                 <label asp-for="DataInicio" class="control-label"></label>
@@ -43,32 +43,6 @@
                 <input asp-for="DataFim" class="form-control" />
                 <span asp-validation-for="DataFim" class="text-danger"></span>
             </div>
-            <!--
-            <div class="form-group">
-                <label asp-for="UsuarioId" class="control-label"></label>
-                <select asp-for="UsuarioId" class ="form-control" asp-items="ViewBag.UsuarioId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="Status" class="control-label"></label>
-                <select asp-for="Status" class="form-control"></select>
-                <span asp-validation-for="Status" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AvaliacaoProprietario" class="control-label"></label>
-                <input asp-for="AvaliacaoProprietario" class="form-control" />
-                <span asp-validation-for="AvaliacaoProprietario" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AvaliacaoConsulente" class="control-label"></label>
-                <input asp-for="AvaliacaoConsulente" class="form-control" />
-                <span asp-validation-for="AvaliacaoConsulente" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DataDevolucaoAntecipada" class="control-label"></label>
-                <input asp-for="DataDevolucaoAntecipada" class="form-control" />
-                <span asp-validation-for="DataDevolucaoAntecipada" class="text-danger"></span>
-            </div>
-            -->
             <div class="form-group">
                 <input type="submit" value="Reservar" class="btn btn-primary" />
             </div>

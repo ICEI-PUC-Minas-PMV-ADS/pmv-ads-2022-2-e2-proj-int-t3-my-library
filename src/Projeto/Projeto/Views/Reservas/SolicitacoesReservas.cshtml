@@ -1,0 +1,96 @@
+﻿@model IEnumerable<Projeto.Models.Reserva>
+
+@{
+    ViewData["Title"] = "Solicitações Reservas";
+}
+
+<style>
+    main {
+        width: 100%;
+        background-color: #C8C8C8;
+    }
+
+    h1 {
+        width: 100%;
+        background-color: #5B9898;
+        color: white;
+        padding: 20px;
+    }
+
+    .tela-reservar {
+        display: flex;
+        justify-content: center;
+    }
+</style>
+
+<h1>Solicitações de Reservas</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Livro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataInicio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataFim)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AvaliacaoProprietario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AvaliacaoConsulente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataDevolucaoAntecipada)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario.CPF)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Livro.Autor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataInicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataFim)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AvaliacaoProprietario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AvaliacaoConsulente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataDevolucaoAntecipada)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
