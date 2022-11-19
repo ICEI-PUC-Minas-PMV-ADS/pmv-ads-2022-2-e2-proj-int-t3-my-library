@@ -20,13 +20,51 @@ namespace Projeto.Controllers
         }
 
 
-        // GET: Minhas Reservas
-        public async Task<IActionResult> MinhasReservas()
+        // GET: Minhas Reservas -- coloquei o filtro para testar
+        public async Task<IActionResult> MinhasReservas(string searchString)
         {
             var applicationDbContext = _context.Reservas
                 .Include(r => r.Livro)
-                .Where(m => m.UsuarioId == UsuarioLogado.usuario.Id);
+                .Where(m =>
+                    m.UsuarioId == UsuarioLogado.usuario.Id
+                    && (
+                        String.IsNullOrEmpty(searchString)
+                            ||(
+                                !String.IsNullOrEmpty(searchString)
+                            )
+                            &&(
+                                 m.Livro.Nome.ToLower().IndexOf(searchString.ToLower()) != -1
+                                 || m.Livro.Autor.ToLower().IndexOf(searchString.ToLower()) != -1
+
+                            )
+                        )
+                    
+                 );
+
+
+
+
             return View(await applicationDbContext.ToListAsync());
+
+
+            //var applicationDbContextFiltro = _context.Livros
+            //    .Include(l => l.Biblioteca)
+            //    .Where(l =>
+            //        l.BibliotecaId == UsuarioLogado.bibliotecaId
+            //        && (
+            //            String.IsNullOrEmpty(searchString)
+            //            || (
+            //                !String.IsNullOrEmpty(searchString)
+            //                && (
+            //                    l.Nome.ToLower().IndexOf(searchString.ToLower()) != -1
+            //                    || l.Autor.ToLower().IndexOf(searchString.ToLower()) != -1
+            //                )
+            //            )
+            //        )
+            //    );
+
+
+
         }
         
         // GET: Solicitações de Reservas
@@ -34,7 +72,7 @@ namespace Projeto.Controllers
         {
             var applicationDbContext = _context.Reservas
                 .Include(r => r.Livro)
-                .Where(m => m.UsuarioId != UsuarioLogado.usuario.Id && m.Livro.BibliotecaId == UsuarioLogado.bibliotecaId);
+                .Where(m => m.UsuarioId != UsuarioLogado.usuario.Id && m.Livro.BibliotecaId == UsuarioLogado.bibliotecaId && (m.Status == Status.Pendente));
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -184,6 +222,45 @@ namespace Projeto.Controllers
             ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "CPF", reserva.UsuarioId);
             return View(reserva);
         }
+
+
+
+        // ALTERAR STATUS DO LIVRO COM A PROVAÇÃO DE RESERVA//////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        public async Task<IActionResult> EditStatus(int? id)
+        {
+           
+
+            var reserva = await _context.Reservas.FindAsync(id);
+            if (reserva == null)
+            {
+                return NotFound();
+            }
+            ViewData["LivroId"] = new SelectList(_context.Livros, "Id", "Autor", reserva.LivroId);
+            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "CPF", reserva.UsuarioId);
+            return View(reserva);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditStatus (int id, [Bind("Id,Status")] Reserva reserva)
+        {
+
+            var r = await _context.Reservas.FirstOrDefaultAsync(r => r.Id == reserva.Id);
+            
+            r.Status = Status.Efetivado; 
+
+            _context.Update(r);
+           
+            await _context.SaveChangesAsync();
+            
+            return RedirectToAction("LivrosEmprestados", "Reservas");
+
+        }
+
+
+        //////////////////////////////////////////////////////////////////////////////////////////////
 
         // GET: Reservas/Delete/5
         public async Task<IActionResult> Delete(int? id)

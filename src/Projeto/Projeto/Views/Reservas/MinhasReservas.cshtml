@@ -28,6 +28,17 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Pesquisar por: @Html.TextBox("SearchString")
+        <input type="submit" value="Buscar" />
+    </p>
+}
+
+
+
 <table class="table">
     <thead>
         <tr>
