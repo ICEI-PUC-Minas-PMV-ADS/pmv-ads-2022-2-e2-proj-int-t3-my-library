@@ -20,7 +20,7 @@ namespace Projeto.Controllers
         }
 
 
-        // GET: Minhas Reservas -- coloquei o filtro para testar
+        // GET: Minhas Reservas -- coloquei o filtro para testar (VOLTAR AQUI PARA CHECAR SE TA OK)
         public async Task<IActionResult> MinhasReservas(string searchString)
         {
             var applicationDbContext = _context.Reservas
@@ -41,30 +41,7 @@ namespace Projeto.Controllers
                     
                  );
 
-
-
-
             return View(await applicationDbContext.ToListAsync());
-
-
-            //var applicationDbContextFiltro = _context.Livros
-            //    .Include(l => l.Biblioteca)
-            //    .Where(l =>
-            //        l.BibliotecaId == UsuarioLogado.bibliotecaId
-            //        && (
-            //            String.IsNullOrEmpty(searchString)
-            //            || (
-            //                !String.IsNullOrEmpty(searchString)
-            //                && (
-            //                    l.Nome.ToLower().IndexOf(searchString.ToLower()) != -1
-            //                    || l.Autor.ToLower().IndexOf(searchString.ToLower()) != -1
-            //                )
-            //            )
-            //        )
-            //    );
-
-
-
         }
         
         // GET: Solicitações de Reservas
