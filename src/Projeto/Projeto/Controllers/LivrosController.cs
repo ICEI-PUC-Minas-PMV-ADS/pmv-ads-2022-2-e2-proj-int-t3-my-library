@@ -59,6 +59,7 @@ namespace Projeto.Controllers
                             && (
                                 l.Nome.ToLower().IndexOf(searchString.ToLower()) != -1
                                 || l.Autor.ToLower().IndexOf(searchString.ToLower()) != -1
+                                || l.Biblioteca.Nome.ToLower().IndexOf(searchString.ToLower()) != -1
                             )
                         )
                     )
