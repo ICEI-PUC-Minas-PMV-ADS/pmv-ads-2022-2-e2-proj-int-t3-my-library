@@ -25,6 +25,14 @@
 
 <h1>Meus Empréstimos</h1>
 
+@using (Html.BeginForm()) {
+        <p>
+            Pesquisar por: @Html.TextBox("SearchString")
+            <input id="input-busca" type="submit" value="Buscar" />
+            <input id="limpar-pesquisa" type="button" value="Limpar" />
+        </p>
+}
+
 <p>
     <a asp-action="Create">Create New</a>
 </p>

@@ -45,36 +45,72 @@ namespace Projeto.Controllers
         }
         
         // GET: Solicitações de Reservas
-        public async Task<IActionResult> SolicitacoesReservas()
+        public async Task<IActionResult> SolicitacoesReservas(string searchString)
         {
             var applicationDbContext = _context.Reservas
                 .Include(r => r.Livro)
-                .Where(m => m.UsuarioId != UsuarioLogado.usuario.Id && m.Livro.BibliotecaId == UsuarioLogado.bibliotecaId && (m.Status == Status.Pendente));
+                .Where(m => m.UsuarioId != UsuarioLogado.usuario.Id && m.Livro.BibliotecaId == UsuarioLogado.bibliotecaId && (m.Status == Status.Pendente)
+                && (
+                        String.IsNullOrEmpty(searchString)
+                            || (
+                                !String.IsNullOrEmpty(searchString)
+                            )
+                            && (
+                                 m.Livro.Nome.ToLower().IndexOf(searchString.ToLower()) != -1
+                                 || m.Livro.Autor.ToLower().IndexOf(searchString.ToLower()) != -1
+
+                            )
+                        )
+                );
             return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: Meus Emprestimos
-        public async Task<IActionResult> MeusEmprestimos()
+        public async Task<IActionResult> MeusEmprestimos(string searchString)
         {
             var applicationDbContext = _context.Reservas
                 .Include(l => l.Livro)
                 .Where(r => 
                     r.UsuarioId == UsuarioLogado.usuario.Id 
                     && (r.Status != Status.Pendente)
+                    && (
+                        String.IsNullOrEmpty(searchString)
+                            || (
+                                !String.IsNullOrEmpty(searchString)
+                            )
+                            && (
+                                 r.Livro.Nome.ToLower().IndexOf(searchString.ToLower()) != -1
+                                 || r.Livro.Autor.ToLower().IndexOf(searchString.ToLower()) != -1
+
+                            )
+                        )
                 );
             return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: Livros Emprestados
-        public async Task<IActionResult> LivrosEmprestados()
-        {
+        public async Task<IActionResult> LivrosEmprestados(string searchString) {
             var applicationDbContext = _context.Reservas
                 .Include(r => r.Livro)
-                .Where(r => 
-                    r.UsuarioId != UsuarioLogado.usuario.Id 
+                .Include(r => r.Livro.Biblioteca)
+                .Where(r =>
+                    r.UsuarioId != UsuarioLogado.usuario.Id
                     && r.Livro.BibliotecaId == UsuarioLogado.bibliotecaId
                     && r.Status != Status.Pendente
-                );
+                    && (
+                        String.IsNullOrEmpty(searchString)
+                            || (
+                                !String.IsNullOrEmpty(searchString)
+                            )
+                            && (
+                                 r.Livro.Nome.ToLower().IndexOf(searchString.ToLower()) != -1
+                                 || r.Livro.Autor.ToLower().IndexOf(searchString.ToLower()) != -1
+
+                            )
+                        )
+
+                 );
+
             return View(await applicationDbContext.ToListAsync());
         }
 
