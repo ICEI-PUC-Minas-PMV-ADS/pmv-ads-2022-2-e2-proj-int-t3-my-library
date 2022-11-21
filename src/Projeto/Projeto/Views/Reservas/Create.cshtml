@@ -23,16 +23,15 @@
     }
 </style>
 
-<h1>Reservar</h1>
+<h1>Formulário de Reserva</h1>
 
 <div class="tela-reservar">
     <div class="col-md-4 formulario">
-        <form asp-action="Create">
+        <h4>Livro: @ViewBag.Livro.Nome</h4>
+        <h5>Biblioteca: @ViewBag.Livro.Biblioteca.Nome</h5>
+        <form asp-action="Create" class="mt-4">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="LivroId" class="control-label"></label>
-                <input asp-for="LivroId" class="form-control" value="@ViewBag.Livro.Id" readonly>
-            </div>
+            <input type="hidden" asp-for="LivroId" class="form-control" value="@ViewBag.Livro.Id" readonly>
             <div class="form-group">
                 <label asp-for="DataInicio" class="control-label"></label>
                 <input asp-for="DataInicio" class="form-control" />
@@ -43,14 +42,12 @@
                 <input asp-for="DataFim" class="form-control" />
                 <span asp-validation-for="DataFim" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Reservar" class="btn btn-primary" />
+            <div class="form-group mt-2" style="text-align: end;">
+                <a asp-controller="Livros" asp-action="LivrosOutrosUsuarios" class="btn btn-primary">Voltar</a>
+
+                <input type="submit" value="Confirmar Reserva" class="btn btn-primary" />
             </div>
         </form>
-    </div>
-
-    <div>
-        <a asp-controller="Livros" asp-action="LivrosOutrosUsuarios">voltar</a>
     </div>
 </div>
 

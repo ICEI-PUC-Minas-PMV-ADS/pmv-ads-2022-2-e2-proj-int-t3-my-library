@@ -122,9 +122,21 @@
     }
 </style>
 
+<script>
+    window.onload = function() {
+
+        $('#limpar-pesquisa').click(() => {
+            $('#SearchString').val(null);
+            $('#input-busca').click();
+        })
+
+    }
+</script>
+
 <h1>Bibliotecas</h1>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     <p>
         Pesquisar por: @Html.TextBox("SearchString")
         <input id="input-busca" type="submit" value="Buscar" />
