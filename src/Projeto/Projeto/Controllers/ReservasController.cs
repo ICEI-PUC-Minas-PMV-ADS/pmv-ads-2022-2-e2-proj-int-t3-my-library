@@ -27,6 +27,7 @@ namespace Projeto.Controllers
                 .Include(r => r.Livro)
                 .Where(m =>
                     m.UsuarioId == UsuarioLogado.usuario.Id
+                    && (m.Status == Status.Pendente || m.Status == Status.Cancelado)
                     && (
                         String.IsNullOrEmpty(searchString)
                             ||(
@@ -113,6 +114,163 @@ namespace Projeto.Controllers
 
             return View(await applicationDbContext.ToListAsync());
         }
+
+        // GET: SolicitarDevolucao
+        public async Task<IActionResult> AcaoSolicitarDevolucao(int id, string telaOrigem, int origem)
+        {
+
+            if (telaOrigem == null || origem == 0)
+            {
+                return NotFound();
+            }
+
+            if (id == null || _context.Reservas == null)
+            {
+                return NotFound();
+            }
+
+            var reserva = await _context.Reservas
+                .Include(r => r.Livro)
+                .Include(r => r.Livro.Biblioteca)
+                .Include(r => r.Usuario)
+                .FirstOrDefaultAsync(m => m.Id == id);
+
+            if (reserva == null)
+            {
+                return NotFound();
+            }
+
+            ViewData["Livro"] = reserva.Livro;
+            ViewData["Id"] = id;
+            ViewData["Origem"] = origem;
+            ViewData["TelaOrigem"] = telaOrigem;
+
+            return View(reserva);
+
+        }
+
+        // POST: SolicitarDevolucao
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AcaoSolicitarDevolucao(int origem, string telaOrigem, [Bind("Id")] Reserva reserva)
+        {
+
+            var r = await _context.Reservas.FirstOrDefaultAsync(r => r.Id == reserva.Id);
+
+            r.Status = origem == 1 ? Status.ConsulenteDev : Status.ProprietarioDev;
+
+            _context.Update(r);
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("MeusEmprestimos", "Reservas");
+
+        }
+
+        // GET: AvaliarEmprestimo
+        public async Task<IActionResult> AcaoAvaliarEmprestimo(int id, string telaOrigem, int origem)
+        {
+
+            if (telaOrigem == null || origem == 0)
+            {
+                return NotFound();
+            }
+
+            if (id == null || _context.Reservas == null)
+            {
+                return NotFound();
+            }
+
+            var reserva = await _context.Reservas
+                .Include(r => r.Livro)
+                .Include(r => r.Livro.Biblioteca)
+                .Include(r => r.Usuario)
+                .FirstOrDefaultAsync(m => m.Id == id);
+
+            if (reserva == null)
+            {
+                return NotFound();
+            }
+
+            ViewData["Livro"] = reserva.Livro;
+            ViewData["Id"] = id;
+            ViewData["Origem"] = origem;
+            ViewData["TelaOrigem"] = telaOrigem;
+
+            return View(reserva);
+
+        }
+
+        // POST: AcaoAvaliarEmprestimo
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AcaoAvaliarEmprestimo(int origem, string telaOrigem, [Bind("Id,AvaliacaoConsulente,AvaliacaoProprietario")] Reserva reserva)
+        {
+
+            var r = await _context.Reservas.FirstOrDefaultAsync(r => r.Id == reserva.Id);
+
+            // CONSULENTE
+            if (origem == 1)
+            {
+                r.AvaliacaoConsulente = reserva.AvaliacaoConsulente;
+            } else // PROPRIETARIO
+            {
+                r.AvaliacaoProprietario = reserva.AvaliacaoProprietario;
+            }
+
+            _context.Update(r);
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(telaOrigem, "Reservas");
+
+        }
+
+        // GET: AcaoCancelarReserva
+        public async Task<IActionResult> AcaoCancelarReserva(int id)
+        {
+
+            if (id == null || _context.Reservas == null)
+            {
+                return NotFound();
+            }
+
+            var reserva = await _context.Reservas
+                .Include(r => r.Livro)
+                .Include(r => r.Livro.Biblioteca)
+                .Include(r => r.Usuario)
+                .FirstOrDefaultAsync(m => m.Id == id);
+
+            if (reserva == null)
+            {
+                return NotFound();
+            }
+
+            ViewData["Livro"] = reserva.Livro;
+            ViewData["Id"] = id;
+
+            return View(reserva);
+
+        }
+
+        // POST: AcaoCancelarReserva
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AcaoCancelarReserva([Bind("Id")] Reserva reserva)
+        {
+
+            var r = await _context.Reservas.FirstOrDefaultAsync(r => r.Id == reserva.Id);
+
+            r.Status = Status.Cancelado;
+
+            _context.Update(r);
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("MinhasReservas", "Reservas");
+
+        }
+
 
         // GET: Reservas
         public async Task<IActionResult> Index()

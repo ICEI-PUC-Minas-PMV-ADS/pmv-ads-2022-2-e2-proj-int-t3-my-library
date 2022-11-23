@@ -1,0 +1,76 @@
+﻿@model Projeto.Models.Reserva
+
+@{
+    ViewData["Title"] = "Avaliar Empréstimo";
+}
+
+<style>
+    main {
+        width: 100%;
+        background-color: #C8C8C8;
+    }
+
+    h1 {
+        width: 100%;
+        background-color: #5B9898;
+        color: white;
+        padding: 20px;
+    }
+
+    .tela-reservar {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+</style>
+
+<h1>Avaliar Empréstimo</h1>
+
+<div class="tela-reservar">
+    <h3 style="margin-bottom: 2em;">Faça uma avaliação do estado físico do livro de quando recebeu!</h3>
+    <div class="col-md-4 formulario">
+        <h4>Livro: @ViewBag.Livro.Nome</h4>
+        <h5>Biblioteca: @ViewBag.Livro.Biblioteca.Nome</h5>
+
+        <form class="mt-4" asp-action="AcaoSolicitarDevolucao">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" readonly />
+
+            @if (@ViewBag.Origem == 1)
+            {
+                <div class="form-group">
+                    <label asp-for="AvaliacaoConsulente" class="control-label">Avaliação (1 a 5):</label>
+                    <input asp-for="AvaliacaoConsulente" value="null" type="number" min="1" max="5" class="form-control" />
+                    <span asp-validation-for="AvaliacaoConsulente" class="text-danger"></span>
+                </div>
+            }
+            @if (@ViewBag.Origem != 1)
+            {
+                <div class="form-group">
+                    <label asp-for="AvaliacaoProprietario" class="control-label">Avaliação (1 a 5):</label>
+                    <input asp-for="AvaliacaoProprietario" value="null" type="number" min="1" max="5" class="form-control" />
+                    <span asp-validation-for="AvaliacaoProprietario" class="text-danger"></span>
+                </div>
+            }
+
+            <div class="mt-2">
+                <div><b>1 =></b> Muito Ruim</div>
+                <div><b>2 =></b> Ruim</div>
+                <div><b>3 =></b> Bom</div>
+                <div><b>4 =></b> Muito Bom</div>
+                <div><b>5 =></b> Excelente</div>
+            </div>
+
+            <div class="form-group mt-4" style="text-align: end;">
+                <a asp-action="MeusEmprestimos" class="btn btn-primary">Voltar</a>
+
+                <input asp-route-origem="@ViewBag.Origem" asp-route-telaOrigem="@ViewBag.TelaOrigem" type="submit" value="Avaliar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

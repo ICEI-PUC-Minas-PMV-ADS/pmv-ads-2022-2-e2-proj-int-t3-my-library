@@ -6,102 +6,184 @@
 
 <style>
     main {
+        background-color: #D9D9D9;
         width: 100%;
-        background-color: #C8C8C8;
     }
 
     h1 {
-        width: 100%;
-        background-color: #5B9898;
         color: white;
-        padding: 20px;
+        background-color: #5B9898;
+        padding: 25px;
     }
 
-    .tela-reservar {
+    .botoes-cria-edita {
         display: flex;
+        justify-content: end;
+        margin-right: 10px;
+    }
+
+    .botoes-cria-edita a {
+        display: block;
+        width: 140px;
+        height: 40px;
+        line-height: 40px;
+        margin: 10px;
+        background-color: #3C7373;
+        color: #FFFFFF;
+        border-radius: 10px;
+        text-decoration: none;
+        text-align: center;
+        font-family: Arial;
+        font-size: 14px;
+    }
+
+    .filtro-minha-biblioteca {
+        width: 100%;
+        height: 100px;
+        background-color: #C8C8C8;
+    }
+
+    .cor-linha {
+        background-color: #979797;
+        color: white;
+    }
+
+    .agrupador-botao-minha-lib {
+        display: flex;
+        margin-right: -19px;
+    }
+
+    .agrupador-botao-minha-lib a {
+        display: block;
+        width: 140px;
+        height: 40px;
+        line-height: 40px;
+        margin: 10px;
+        background-color: #BBBBBB;
+        color: #000000;
+        border-radius: 10px;
+        text-decoration: none;
+        text-align: center;
+        font-family: Arial;
+        font-size: 14px;
+    }
+
+    .linha-livro {
+        background: darkgray;
+    }
+
+    .livro-infos {
+        width: 100%;
+    }
+
+    .livro-infos .livro-nome {
+        text-transform: capitalize;
+        text-transform: capitalize;
+        font-size: 30px;
+        font-weight: 600;
+        color: white;
+    }
+
+    .livro-infos .livro-isbn {
+    }
+
+    .livro-infos .livro-autor {
+        text-transform: capitalize;
+    }
+
+    .livro-infos .livro-biblioteca-nome {
+        text-transform: capitalize;
+    }
+
+    .livro-acao {
+        vertical-align: middle;
+    }
+
+    .livro-subtexto {
+        font-weight: 600;
+    }
+
+    .btn-reservar {
+        text-decoration: none;
+    }
+
+    .btn-reservar div {
+        display: flex;
+        width: 100px;
+        height: 40px;
+        align-items: center;
         justify-content: center;
+        background-color: #3b3a3a;
+        color: white;
+        border-radius: 80px;
+        border: none;
+    }
+
+    .btn-reservar div:hover {
+        opacity: 0.75;
     }
 </style>
 
 <h1>Minhas Reservas</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-
 @using (Html.BeginForm())
 {
     <p>
         Pesquisar por: @Html.TextBox("SearchString")
-        <input type="submit" value="Buscar" />
+        <input id="input-busca" type="submit" value="Buscar" />
+        <input id="limpar-pesquisa" type="button" value="Limpar" />
     </p>
 }
 
+<script>
+    window.onload = function () {
 
+        let limparEvent = $('#limpar-pesquisa').click(() => {
+            $('#SearchString').val(null);
+            $('#input-busca').click();
+        })
+
+    }
+
+</script>
 
 <table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Usuario)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Livro)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataInicio)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataFim)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AvaliacaoProprietario)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AvaliacaoConsulente)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataDevolucaoAntecipada)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Usuario.CPF)
+    @foreach (var item in Model)
+    {
+        <tr class="linha-livro">
+            <td class="livro-infos">
+                <div class="livro-nome">
+                    @Html.DisplayFor(modelItem => item.Livro.Nome)
+                </div>
+
+                <div style="display: flex;">
+                    <div style="width: 100%;">
+                        <div class="livro-isbn"><span class="livro-subtexto">ISBN:</span> @Html.DisplayFor(modelItem => item.Livro.ISBN)</div>
+                        <div class="livro-autor"><span class="livro-subtexto">Autor:</span> @Html.DisplayFor(modelItem => item.Livro.Autor)</div>
+                    </div>
+
+                    <div style="width: 100%;">
+                        <div class="livro-biblioteca-nome">@Html.DisplayFor(modelItem => item.Livro.Biblioteca.Nome)</div>
+                    </div>
+
+                    <div style="width: 100%;">
+                        <div class="status-reserva">
+                            <b>Situação:</b> @Html.DisplayFor(modelItem => item.Status)
+                        </div>
+                    </div>
+                </div>
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Livro.Autor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataInicio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataFim)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AvaliacaoProprietario)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AvaliacaoConsulente)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataDevolucaoAntecipada)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+
+            <td class="livro-acao">
+                @if (@item.Status != Projeto.Enum.Status.Cancelado)
+                {
+                    <a asp-controller="Reservas" asp-action="AcaoCancelarReserva" asp-route-id="@item.Id" class="btn-reservar" title="Clique para cancelar reserva">
+                        <div class="text-button">
+                            Cancelar
+                        </div>
+                    </a>
+                }
             </td>
         </tr>
-}
-    </tbody>
+    }
 </table>

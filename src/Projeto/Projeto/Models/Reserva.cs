@@ -26,8 +26,14 @@ namespace Projeto.Models
 
         public Status Status{ get; set; }
 
+        [Required(ErrorMessage = "Avaliação obrigatória!")]
+        [MinValueAttribute(1)]
+        [MaxValueAttribute(5)]
         public int AvaliacaoProprietario { get; set; }
 
+        [Required(ErrorMessage = "Avaliação obrigatória!")]
+        [MinValueAttribute(1)]
+        [MaxValueAttribute(5)]
         public int AvaliacaoConsulente { get; set; }
 
         public DateTime DataDevolucaoAntecipada { get; set; }

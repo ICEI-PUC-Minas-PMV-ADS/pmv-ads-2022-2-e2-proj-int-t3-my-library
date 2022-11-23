@@ -1,0 +1,52 @@
+﻿@model Projeto.Models.Reserva
+
+@{
+    ViewData["Title"] = "Cancelar Reserva";
+}
+<style>
+    main {
+        width: 100%;
+        background-color: #C8C8C8;
+    }
+
+    h1 {
+        width: 100%;
+        background-color: #5B9898;
+        color: white;
+        padding: 20px;
+    }
+
+    .tela-reservar {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+</style>
+
+<h1>Cancelar Reserva</h1>
+
+<div class="tela-reservar">
+    <h3 style="margin-bottom: 2em;">Cancelar a reserva do livro?</h3>
+    <div class="col-md-4 formulario">
+        <h4>Livro: @ViewBag.Livro.Nome</h4>
+        <h5>Biblioteca: @ViewBag.Livro.Biblioteca.Nome</h5>
+
+        <form asp-action="AcaoCancelarReserva">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" readonly />
+
+            <div class="form-group mt-4" style="text-align: end;">
+                <a asp-action="MinhasReservas" class="btn btn-primary">Voltar</a>
+
+                <input type="submit" value="Cancelar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
