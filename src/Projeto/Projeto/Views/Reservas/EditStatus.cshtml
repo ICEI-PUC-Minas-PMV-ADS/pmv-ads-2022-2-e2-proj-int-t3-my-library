@@ -4,25 +4,62 @@
     ViewData["Title"] = "EditStatus";
 }
 
-<h1>EditStatus</h1>
+<style>
+    main {
+        width: 100%;
+        background-color: #C8C8C8;
+    }
 
-<h4>Reserva</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+    h2 {
+        width: 100%;
+        background-color: #5B9898;
+        color: white;
+        padding: 20px;
+        text-align:center;
+    }
+    .container-forms{
+        display: flex;
+        gap: 50px;
+        padding: 40px;
+        /* margin: auto 0; */
+        align-items: center;
+        justify-content: center;
+    }
+
+    .input-buttons {
+        display: block;
+        width: 240px;
+        height: 40px;
+        
+        margin: 10px;
+        background-color: #3b3a3a;
+        color: white;
+        border-radius: 80px;
+        text-decoration: none;
+        text-align: center;
+        font-family: Arial;
+        font-size: 14px;
+    }
+
+</style>
+
+<h2>Você deseja confirmar a solicitação?</h2>
+    <div class="container-forms">
         <form asp-action="EditStatus">
-
-            <input type="hidden" asp-for="Id" />
-            <h2>Você deseja confirmar a solicitação?</h2>
+            <input type="hidden" asp-for="Id" />  
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+            <input type="submit" value="Aprovar" class="input-buttons" />
+            </div>
+        </form>
+        <form asp-action="EditStatusCancelar">
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+            <input type="submit" value="Reprovar" class="input-buttons" />
             </div>
         </form>
     </div>
-</div>
-
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="SolicitacoesReservas">Voltar</a>
 </div>
 
 @section Scripts {

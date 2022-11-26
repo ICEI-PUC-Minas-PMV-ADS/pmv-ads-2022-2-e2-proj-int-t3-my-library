@@ -98,6 +98,7 @@ namespace Projeto.Controllers
                     r.UsuarioId != UsuarioLogado.usuario.Id
                     && r.Livro.BibliotecaId == UsuarioLogado.bibliotecaId
                     && r.Status != Status.Pendente
+                    && r.Status != Status.Cancelado
                     && (
                         String.IsNullOrEmpty(searchString)
                             || (
@@ -426,6 +427,23 @@ namespace Projeto.Controllers
            
             await _context.SaveChangesAsync();
             
+            return RedirectToAction("LivrosEmprestados", "Reservas");
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditStatusCancelar(int id, [Bind("Id,Status")] Reserva reserva)
+        {
+
+            var r = await _context.Reservas.FirstOrDefaultAsync(r => r.Id == reserva.Id);
+
+            r.Status = Status.Cancelado;
+
+            _context.Update(r);
+
+            await _context.SaveChangesAsync();
+
             return RedirectToAction("LivrosEmprestados", "Reservas");
 
         }

@@ -3,14 +3,46 @@
 @{
     ViewData["Title"] = "Delete";
 }
+<style>
+    main{
+        width: 100%;
+        background-color: #D9D9D9;
+    }
 
-<h1>Delete</h1>
+    h1 {
+        color: white;
+        background-color: #5B9898;
+        padding: 25px;
+    }
 
-<h3>Are you sure you want to delete this?</h3>
+
+    .container-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .form-create-livro{
+        width: 60%;
+    }
+
+    .form-create-livro input{
+            background-color: #D9D9D9;
+    }
+
+    .div-form{
+        margin: 0 auto;
+    }
+</style>
+
+
+<h1>Excluir Livro</h1>
+
+<h3>Tem certeza que quer deletar?</h3>
 <div>
-    <h4>Livro</h4>
+
     <hr />
-    <dl class="row">
+    <dl class="row div-form">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Biblioteca)
         </dt>
@@ -81,7 +113,7 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <input type="submit" value="Apagar" class="btn btn-danger" /> |
+        <a asp-action="LivrosDoUsuario">Voltar</a>
     </form>
 </div>

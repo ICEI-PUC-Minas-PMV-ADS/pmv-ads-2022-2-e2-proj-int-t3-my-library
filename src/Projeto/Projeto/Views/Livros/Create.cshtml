@@ -30,12 +30,17 @@
     .form-create-livro input{
             background-color: #D9D9D9;
     }
+
+    .div-form{
+        margin: 0 auto;
+    }
+
 </style>
 
 <h1>Cadastrar Livro</h1>
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4 div-form">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -100,7 +105,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="LivrosDoUsuario">Voltar</a>
 </div>
 
 @section Scripts {
