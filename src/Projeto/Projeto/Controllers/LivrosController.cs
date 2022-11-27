@@ -118,7 +118,7 @@ namespace Projeto.Controllers
 
             ViewData["BibliotecaId"] = new SelectList(_context.Bibliotecas, "Id", "Id", livro.BibliotecaId);
 
-            return View(livro);
+            return RedirectToAction("LivrosDoUsuario", "Livros");
         }
 
         // GET: Livros/Edit/5
