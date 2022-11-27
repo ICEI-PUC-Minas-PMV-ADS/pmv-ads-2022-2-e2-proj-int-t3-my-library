@@ -133,7 +133,7 @@ namespace Projeto.Controllers
             {
                 return NotFound();
             }
-            ViewData["BibliotecaId"] = new SelectList(_context.Bibliotecas, "Id", "Id", livro.BibliotecaId);
+            ViewData["BibliotecaId"] = livro.BibliotecaId;
             return View(livro);
         }
 
@@ -145,35 +145,16 @@ namespace Projeto.Controllers
         public async Task<IActionResult> Edit(int id, [Bind("Id,BibliotecaId,Nome,Autor,Titulo,Ano,Genero,Editora,Paginas,ISBN,Local,Emprestar")] Livro livro)
         {
 
-            livro.Biblioteca = await _context.Bibliotecas.FindAsync(livro.BibliotecaId);
+            //livro.Biblioteca = await _context.Bibliotecas.FindAsync(livro.BibliotecaId);
 
-            if (id != livro.Id)
-            {
-                return NotFound();
-            }
+    
+            _context.Update(livro);
+            await _context.SaveChangesAsync();
+            ViewData["BibliotecaId"] = (_context.Bibliotecas, "Id", "Id", livro.BibliotecaId);
+            return RedirectToAction("LivrosDoUsuario", "Livros");
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(livro);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!LivroExists(livro.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["BibliotecaId"] = new SelectList(_context.Bibliotecas, "Id", "Id", livro.BibliotecaId);
-            return View(livro);
+
+
         }
 
         // GET: Livros/Delete/5
