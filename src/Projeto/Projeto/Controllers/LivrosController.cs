@@ -98,7 +98,7 @@ namespace Projeto.Controllers
         // GET: Livros/Create
         public IActionResult Create()
         {
-            ViewData["BibliotecaId"] = new SelectList(_context.Bibliotecas, "Id", "Id");
+            ViewData["BibliotecaId"] = UsuarioLogado.bibliotecaId;
             return View();
         }
 
@@ -109,13 +109,15 @@ namespace Projeto.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,BibliotecaId,Nome,Autor,Titulo,Ano,Genero,Editora,Paginas,ISBN,Local,Emprestar")] Livro livro)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(livro);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
+
+            livro.Biblioteca = await _context.Bibliotecas.FindAsync(livro.BibliotecaId);
+
+            _context.Add(livro);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+
             ViewData["BibliotecaId"] = new SelectList(_context.Bibliotecas, "Id", "Id", livro.BibliotecaId);
+
             return View(livro);
         }
 
