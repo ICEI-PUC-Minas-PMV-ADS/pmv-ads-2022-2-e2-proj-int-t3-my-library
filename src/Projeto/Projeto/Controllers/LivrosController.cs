@@ -114,7 +114,6 @@ namespace Projeto.Controllers
 
             _context.Add(livro);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
 
             ViewData["BibliotecaId"] = new SelectList(_context.Bibliotecas, "Id", "Id", livro.BibliotecaId);
 
@@ -145,6 +144,9 @@ namespace Projeto.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,BibliotecaId,Nome,Autor,Titulo,Ano,Genero,Editora,Paginas,ISBN,Local,Emprestar")] Livro livro)
         {
+
+            livro.Biblioteca = await _context.Bibliotecas.FindAsync(livro.BibliotecaId);
+
             if (id != livro.Id)
             {
                 return NotFound();
