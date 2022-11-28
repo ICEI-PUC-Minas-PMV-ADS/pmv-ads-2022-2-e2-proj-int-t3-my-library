@@ -117,10 +117,10 @@ namespace Projeto.Controllers
         }
 
         // GET: SolicitarDevolucao
-        public async Task<IActionResult> AcaoSolicitarDevolucao(int id, string telaOrigem, int origem)
+        public async Task<IActionResult> AcaoSolicitarDevolucao(int id, int origem)
         {
 
-            if (telaOrigem == null || origem == 0)
+            if (origem == 0)
             {
                 return NotFound();
             }
@@ -144,7 +144,6 @@ namespace Projeto.Controllers
             ViewData["Livro"] = reserva.Livro;
             ViewData["Id"] = id;
             ViewData["Origem"] = origem;
-            ViewData["TelaOrigem"] = telaOrigem;
 
             return View(reserva);
 
@@ -153,7 +152,7 @@ namespace Projeto.Controllers
         // POST: SolicitarDevolucao
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AcaoSolicitarDevolucao(int origem, string telaOrigem, [Bind("Id")] Reserva reserva)
+        public async Task<IActionResult> AcaoSolicitarDevolucao(int origem, [Bind("Id")] Reserva reserva)
         {
 
             var r = await _context.Reservas.FirstOrDefaultAsync(r => r.Id == reserva.Id);
@@ -164,15 +163,15 @@ namespace Projeto.Controllers
 
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("MeusEmprestimos", "Reservas");
+            return RedirectToAction(origem == 1 ? "MeusEmprestimos" : "LivrosEmprestados", "Reservas");
 
         }
 
         // GET: AvaliarEmprestimo
-        public async Task<IActionResult> AcaoAvaliarEmprestimo(int id, string telaOrigem, int origem)
+        public async Task<IActionResult> AcaoAvaliarEmprestimo(int id, int origem)
         {
 
-            if (telaOrigem == null || origem == 0)
+            if (origem == 0)
             {
                 return NotFound();
             }
@@ -196,7 +195,6 @@ namespace Projeto.Controllers
             ViewData["Livro"] = reserva.Livro;
             ViewData["Id"] = id;
             ViewData["Origem"] = origem;
-            ViewData["TelaOrigem"] = telaOrigem;
 
             return View(reserva);
 
@@ -205,7 +203,7 @@ namespace Projeto.Controllers
         // POST: AcaoAvaliarEmprestimo
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AcaoAvaliarEmprestimo(int origem, string telaOrigem, [Bind("Id,AvaliacaoConsulente,AvaliacaoProprietario")] Reserva reserva)
+        public async Task<IActionResult> AcaoAvaliarEmprestimo(int origem, [Bind("Id,AvaliacaoConsulente,AvaliacaoProprietario")] Reserva reserva)
         {
 
             var r = await _context.Reservas.FirstOrDefaultAsync(r => r.Id == reserva.Id);
@@ -223,7 +221,7 @@ namespace Projeto.Controllers
 
             await _context.SaveChangesAsync();
 
-            return RedirectToAction(telaOrigem, "Reservas");
+            return RedirectToAction(origem == 1 ? "MeusEmprestimos" : "LivrosEmprestados", "Reservas");
 
         }
 
