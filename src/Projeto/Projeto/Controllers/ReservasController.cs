@@ -212,7 +212,7 @@ namespace Projeto.Controllers
             if (origem == 1)
             {
                 r.AvaliacaoConsulente = reserva.AvaliacaoConsulente;
-            } else // PROPRIETARIO
+            } else if(origem == 2) // PROPRIETARIO
             {
                 r.AvaliacaoProprietario = reserva.AvaliacaoProprietario;
             }
@@ -393,6 +393,49 @@ namespace Projeto.Controllers
             return View(reserva);
         }
 
+        // GET: ConfirmarDevolucao
+        public async Task<IActionResult> AcaoConfirmarDevolucao(int id)
+        {
+
+            if (id == null || _context.Reservas == null)
+            {
+                return NotFound();
+            }
+
+            var reserva = await _context.Reservas
+                .Include(r => r.Livro)
+                .Include(r => r.Livro.Biblioteca)
+                .Include(r => r.Usuario)
+                .FirstOrDefaultAsync(m => m.Id == id);
+
+            if (reserva == null)
+            {
+                return NotFound();
+            }
+
+            ViewData["Livro"] = reserva.Livro;
+
+            return View(reserva);
+
+        }
+
+        // POST: ConfirmarDevolucao
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AcaoConfirmarDevolucao([Bind("Id")] Reserva reserva)
+        {
+
+            var r = await _context.Reservas.FirstOrDefaultAsync(r => r.Id == reserva.Id);
+
+            r.Status = Status.Finalizado;
+
+            _context.Update(r);
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("LivrosEmprestados", "Reservas");
+
+        }
 
 
         // ALTERAR STATUS DO LIVRO COM A PROVAÇÃO DE RESERVA//////////////////////////////////////////////////////////////////////////////////////////////

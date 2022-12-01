@@ -97,6 +97,7 @@
 
     .livro-acao {
         vertical-align: middle;
+
     }
 
     .livro-subtexto {
@@ -109,7 +110,7 @@
 
         .btn-reservar div {
             display: flex;
-            width: 100px;
+            width: 160px;
             height: 40px;
             align-items: center;
             justify-content: center;
@@ -167,27 +168,46 @@
                         <div class="status-reserva">
                             <b>Situação:</b> @Html.DisplayFor(modelItem => item.Status)
                         </div>
+
+                        @if (@item.Status == Projeto.Enum.Status.Finalizado)
+                        {
+                            <div>
+                                <b>Avaliação (1~5):</b>
+                                @if (@item.AvaliacaoProprietario == 0)
+                                {
+                                    <span>não realizada</span>
+                                }
+                                @if (@item.AvaliacaoProprietario != 0)
+                                {
+                                    <span>@item.AvaliacaoProprietario</span>
+                                }
+                            </div>
+                        }
                     </div>
                 </div>
             </td>
 
             <td class="livro-acao">
-                @if (@item.Status == Projeto.Enum.Status.Efetivado) {
-                    <a asp-controller="Reservas" asp-action="Details" asp-route-id="@item.Id" class="btn-reservar" title="Clique para solicitar devolução">
+                @if (@item.Status == Projeto.Enum.Status.Efetivado ) {
+                    <a asp-controller="Reservas" asp-action="AcaoSolicitarDevolucao" asp-route-id="@item.Id" class="btn-reservar"
+                    asp-route-origem="2"  title="Clique para solicitar devolução">
                         <div class="text-button">
                             Solicitar Devolução
                         </div>
                     </a>
                 }
-                @if (@item.Status == Projeto.Enum.Status.Finalizado) {
-                    <a asp-controller="Reservas" asp-action="Details" asp-route-id="@item.Id" class="btn-reservar" title="Clique para avaliar">
+                @if (@item.Status == Projeto.Enum.Status.Finalizado && @item.AvaliacaoProprietario == 0)
+                {
+                    <a asp-controller="Reservas" asp-action="AcaoAvaliarEmprestimo" asp-route-id="@item.Id"
+                        asp-route-origem="2" class="btn-reservar" title="Clique para avaliar">
                         <div>
                             Avaliar
                         </div>
                     </a>
                 }
                 @if (@item.Status == Projeto.Enum.Status.ProprietarioDev || @item.Status == Projeto.Enum.Status.ConsulenteDev || @item.Status == Projeto.Enum.Status.Atrasado) {
-                    <a asp-controller="Reservas" asp-action="Details" asp-route-id="@item.Id" class="btn-reservar" title="Clique para confirmar devolução">
+                    <a asp-controller="Reservas" asp-action="AcaoConfirmarDevolucao"
+                    asp-route-id="@item.Id" class="btn-reservar" title="Clique para confirmar devolução">
                         <div>
                             Confirmar Devolução
                         </div>

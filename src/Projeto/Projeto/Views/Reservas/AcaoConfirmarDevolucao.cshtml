@@ -1,0 +1,65 @@
+﻿@model Projeto.Models.Reserva
+
+@{
+    ViewData["Title"] = "AcaoConfirmarDevolucao";
+}
+
+<style>
+    main {
+        width: 100%;
+        background-color: #C8C8C8;
+    }
+
+    h1 {
+        width: 100%;
+        background-color: #5B9898;
+        color: white;
+        padding: 20px;
+    }
+
+    .tela-reservar {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .buttons{
+        margin-top: 15px;
+
+    }
+</style>
+<h1>AcaoConfirmarDevolucao</h1>
+
+<h4>Reserva</h4>
+<hr/>
+<div class="tela-reservar">
+    <div class="col-md-4">
+        <form asp-action="AcaoConfirmarDevolucao">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="DataInicio" class="control-label">Data Início</label>
+                <input asp-for="DataInicio" class="form-control" readonly/>
+                <span asp-validation-for="DataInicio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataFim" class="control-label">Data Fim</label>
+                <input asp-for="DataFim" class="form-control" readonly/>
+                <span asp-validation-for="DataFim" class="text-danger"> </span>
+            </div>
+
+
+            <div class="buttons">
+                <a asp-action="LivrosEmprestados" class="btn btn-primary">Voltar</a>
+
+                <input type="submit" value="Cancelar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
