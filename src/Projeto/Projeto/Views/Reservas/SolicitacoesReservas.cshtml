@@ -121,6 +121,17 @@
 
 <h1>Solicitações de Reservas</h1>
 
+<script>
+    window.onload = function () {
+
+        $('#limpar-pesquisa').click(() => {
+            $('#SearchString').val(null);
+            $('#input-busca').click();
+        })
+
+    }
+</script>
+
 @using (Html.BeginForm()) {
     <p>
         Pesquisar por: @Html.TextBox("SearchString")
