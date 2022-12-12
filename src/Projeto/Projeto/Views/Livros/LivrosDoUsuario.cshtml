@@ -120,6 +120,16 @@
 <!-- Ver como puxar direto do banco o nome da biblioteca do usuario-->
 <h1>@ViewBag.NomeBiblioteca</h1>
 
+<script>
+    window.onload = function () {
+
+        $('#limpar-pesquisa').click(() => {
+            $('#SearchString').val(null);
+            $('#input-busca').click();
+        })
+
+    }
+</script>
 
 <div class="botoes-cria-edita">
     <a asp-action="Create">Adicionar Livro</a>
@@ -196,7 +206,7 @@
                 <td class="livro-acao">
                     <div class="agrupador-botao-minha-lib">
                         <div>
-                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                            <a asp-action="Edit" asp-route-id="@item.Id">Editar</a>
                         </div>
                         <!--
                                                     <div>
