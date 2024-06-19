@@ -1,0 +1,20 @@
+message: Please cite this software using these metadata.
+title: My Library
+authors:
+  - family-names: Pereira Marques
+    given-names: Carlos Eduardo 
+  - family-names: Puddo Cardoso
+    given-names: Gabriel José
+  - family-names: Lessa Henrique
+    given-names: João Victor
+  - name-suffix: Professor
+    affiliation: PUC Minas
+    family-names: José Wilson
+    given-names: da Costa
+keywords:
+  - Gestão
+  - Biblioteca
+  - Livros
+repository-code: https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2022-2-e2-proj-int-t3-my-library
+version: 1.0.0
+date-released: 2022-12-11
